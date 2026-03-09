@@ -12,6 +12,7 @@ public:
         void stop();
         void run() override;
 private:
+        bool show_debug = true;
         int thread_exit;
         int readout_cnt;
         void process(data_t data);

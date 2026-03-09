@@ -39,6 +39,7 @@ private:
         QWebSocketServer *m_pWebSocketServer;
         QList<QWebSocket *> m_clients;
         bool m_debug;
+        void check_void();
 };
 
 #endif

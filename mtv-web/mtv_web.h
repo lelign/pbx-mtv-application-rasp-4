@@ -24,6 +24,7 @@ class Mtv_web : public QObject
     Q_OBJECT
 public:
     explicit Mtv_web(PbxMtvSystem *mtvsystem, Hardware_diagnostics *hardware_diagnostics, Layout *layout);
+    //explicit Mtv_web(PbxMtvSystem *mtvsystem, Hardware_diagnostics *hardware_diagnostics);
     ~Mtv_web();
 
 
@@ -117,6 +118,7 @@ private:
     void cmd_set_nework_settings(QJsonObject data_obj);
     void cmd_set_layout_presets(QJsonObject data_obj);
     void Settings_Read();
+    void Check();
     void Settings_Write();
     void set_sys_conf();
     int  get_model_device();

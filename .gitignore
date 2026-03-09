@@ -1,0 +1,5 @@
+*.log
+CMakeError.log
+CMakeOutput.log
+CMakeCache.log
+CMakeLists.txt.user

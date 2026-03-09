@@ -15,18 +15,25 @@ WebSocketServer::WebSocketServer(quint16 port, bool debug, QObject *parent) :
         m_clients(),
         m_debug(debug)
 {
+        //qDebug() << "websocketserver.cpp 18 \n\t\tm_debug : " << m_debug;
         if (m_pWebSocketServer->listen(QHostAddress::Any, port)){
+                //qDebug() << "websocketserver.cpp 21 \n\t\tport : "  << port;
                 if (m_debug)
                         qDebug() << "WebSocketServer listening on port" << port;
                 connect(m_pWebSocketServer, &QWebSocketServer::newConnection,
                         this, &WebSocketServer::onNewConnection);
                 connect(m_pWebSocketServer, &QWebSocketServer::closed, this, &WebSocketServer::closed);
         }
-}
 
+        qDebug() << "websocketserver.cpp 28\n\t\t created";
+}
+void check_void(){
+    qDebug() << "websocketserver.cpp 31 check void";
+}
 WebSocketServer::~WebSocketServer()
 {
         m_pWebSocketServer->close();
+        qDebug() << "websocketserver.cpp 34";
         qDeleteAll(m_clients.begin(), m_clients.end());
 }
 

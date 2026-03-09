@@ -49,6 +49,7 @@ public:
         PbxMtvSystem();
         ~PbxMtvSystem();
 private:
+        bool show_debug = true; // ign added to monitor debug()
         QTimer sdi_format_timer;
         QTimer sdi_format_notify_timer;
         int sdi_format[8];

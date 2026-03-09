@@ -389,7 +389,10 @@ void MB86M26::gpio_value(const char * name, int value)
         sprintf(buf, GPIO_VALUE, name);
         f = fopen(buf, "w");
         if(!f){
-                qCDebug(category) << "GPIO error";
+                qCDebug(category) << "mb86m26.cpp 392 \t\tGPIO error"
+                "\n\t\tbuf : " << buf <<
+                "\n\t\tGPIO_VALUE : " << GPIO_VALUE <<
+                "\n\t\tname : " << name;
                 return;
         }
         sprintf(buf, "%d\n", value);

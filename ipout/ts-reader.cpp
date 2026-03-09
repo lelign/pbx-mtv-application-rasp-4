@@ -28,18 +28,24 @@ TsReader::~TsReader()
 data_t TsReader::get_data(void)
 {
         data_t data;
-        bool wait_satus=true;
+        bool wait_satus=true;        
         mutex.lock();
         if(queue_full.isEmpty()){
                 wait_satus = bufferNotEmpty.wait(&mutex, 1000);
         }
         if(wait_satus){
+
                 data = queue_full.dequeue();
                 mutex.unlock();
+                qDebug() << "ts-reader.cpp 40 \n\t\twait_satus : " << wait_satus << "\ n\t\tdata : " << data.size;
                 return data;
         }
         else{
                 mutex.unlock();
+                if (show_debug){
+                    qDebug() << "ts-reader.cpp 46 \t\tneverend cicle \n\t\twait_satus : " << wait_satus;
+                    show_debug = false;
+                }
                 return data_invalid;
         }
 }

@@ -8,7 +8,8 @@
 #include "../board_config.h"
 
 #define FIRMWARE_FILE "/var/spirom_writer_usb_c.bin"
-#define GPIO_VALUE "/sys/class/gpio/%s/value"
+//#define GPIO_VALUE "/sys/class/gpio/%s/value"
+#define GPIO_VALUE "/home/pi/gpio_from_508/%s/value"
 #define USB_MB_VENDOR_ID 0x04c5
 #define USB_MB_SPI_PRODUCT_ID 0x202f
 #define USB_TIMEOUT 1000
@@ -31,7 +32,7 @@ void gpio_value(const char * name, int value)
         sprintf(buf, GPIO_VALUE, name);
         f = fopen(buf, "w");
         if(!f)
-                printf("GPIO error");
+                printf("m26-eeprom.cpp 34 \t\tGPIO error");
         sprintf(buf, "%d\n", value);
         fwrite(buf, 1, strlen(buf), f);
         fclose(f);

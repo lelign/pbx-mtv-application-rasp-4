@@ -15,7 +15,7 @@ static QLoggingCategory category("SYSTEM");
 const char * fname = "/dev/str-mem";
 const int video_size = 1920*1080*3;
 #define MOTION_THR (100)
-#define ANCIN ("/dev/tsin1")
+#define ANCIN ("/dev/tty10")
 
 enum {
         REG_HDMI_OUT,
@@ -275,7 +275,9 @@ PbxMtvSystem::PbxMtvSystem()
         connect(&sdi_format_notify_timer, &QTimer::timeout, this, &PbxMtvSystem::sdi_format_notify_timeout);
         set_audio_source(0);
         reconfigure();
+        qDebug() << "mtv-system.cpp 278" << ANCIN;
         anc_reader = new AncReader(ANCIN, this);
+
         anc_reader->start();
 }
 
@@ -725,12 +727,25 @@ void PbxMtvSystem::overlay_sync()
         int f;
 
         Q_CHECK_PTR(buffer);
-        f = open("/dev/mtv-overlay", O_WRONLY);
+
+
+        //f = open("/dev/mtv-overlay", O_WRONLY);
+        f = open("/dev/media3", O_WRONLY);
+        if (show_debug){
+            qDebug() << "mtv-system.cpp 731\t\tneverend cicle"
+                        "\n\t\tsudo mknod /dev/mtv-overlay c 249 0 "
+                        "\n\t\tsudo chmod go-r /dev/mtv-overlay"
+                        "\n\t\tbuffer : "<< buffer <<
+                        "\n\t\t f :" << f;
+            show_debug = false;
+        }
+
         Q_ASSERT(f>0);
 
         write(f, buffer, video_size);
 
         close(f);
+
 }
 
 void PbxMtvSystem::configure_image(int index, int width, int height, int x, int y, int enable)

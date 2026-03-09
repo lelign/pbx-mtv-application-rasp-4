@@ -2,33 +2,33 @@
 
 #if (BOARD_REV==0)
 
-#define PATH_TO_GPIO_IN_0 "/sys/class/gpio/gpio480/value"
-#define PATH_TO_GPIO_IN_1 "/sys/class/gpio/gpio481/value"
-#define PATH_TO_GPIO_IN_2 "/sys/class/gpio/gpio482/value"
-#define PATH_TO_GPIO_IN_3 "/sys/class/gpio/gpio483/value"
-#define PATH_TO_GPIO_IN_4 "/sys/class/gpio/gpio484/value"
-#define PATH_TO_GPIO_IN_5 "/sys/class/gpio/gpio485/value"
-#define PATH_TO_GPIO_IN_6 "/sys/class/gpio/gpio486/value"
-#define PATH_TO_GPIO_IN_7 "/sys/class/gpio/gpio487/value"
-#define PATH_TO_GPIO_IN_8 "/sys/class/gpio/gpio489/value"
-#define PATH_TO_GPIO_IN_9 "/sys/class/gpio/gpio488/value"
+#define PATH_TO_GPIO_IN_0 "/home/pi/gpio_from_508/gpio480/value"
+#define PATH_TO_GPIO_IN_1 "/home/pi/gpio_from_508/gpio481/value"
+#define PATH_TO_GPIO_IN_2 "/home/pi/gpio_from_508/gpio482/value"
+#define PATH_TO_GPIO_IN_3 "/home/pi/gpio_from_508/gpio483/value"
+#define PATH_TO_GPIO_IN_4 "/home/pi/gpio_from_508/gpio484/value"
+#define PATH_TO_GPIO_IN_5 "/home/pi/gpio_from_508/gpio485/value"
+#define PATH_TO_GPIO_IN_6 "/home/pi/gpio_from_508/gpio486/value"
+#define PATH_TO_GPIO_IN_7 "/home/pi/gpio_from_508/gpio487/value"
+#define PATH_TO_GPIO_IN_8 "/home/pi/gpio_from_508/gpio489/value"
+#define PATH_TO_GPIO_IN_9 "/home/pi/gpio_from_508/gpio488/value"
 
-#define PATH_TO_GPIO_OUT  "/sys/class/gpio/gpio491/value"
+#define PATH_TO_GPIO_OUT  "/home/pi/gpio_from_508/gpio491/value"
 
 #else
 
-#define PATH_TO_GPIO_IN_0 "/sys/class/gpio/gpio422/value"
-#define PATH_TO_GPIO_IN_1 "/sys/class/gpio/gpio423/value"
-#define PATH_TO_GPIO_IN_2 "/sys/class/gpio/gpio424/value"
-#define PATH_TO_GPIO_IN_3 "/sys/class/gpio/gpio425/value"
-#define PATH_TO_GPIO_IN_4 "/sys/class/gpio/gpio426/value"
-#define PATH_TO_GPIO_IN_5 "/sys/class/gpio/gpio427/value"
-#define PATH_TO_GPIO_IN_6 "/sys/class/gpio/gpio428/value"
-#define PATH_TO_GPIO_IN_7 "/sys/class/gpio/gpio429/value"
-#define PATH_TO_GPIO_IN_8 "/sys/class/gpio/gpio431/value"
-#define PATH_TO_GPIO_IN_9 "/sys/class/gpio/gpio430/value"
+#define PATH_TO_GPIO_IN_0 "/home/pi/gpio_from_508/gpio422/value"
+#define PATH_TO_GPIO_IN_1 "/home/pi/gpio_from_508/gpio423/value"
+#define PATH_TO_GPIO_IN_2 "/home/pi/gpio_from_508/gpio424/value"
+#define PATH_TO_GPIO_IN_3 "/home/pi/gpio_from_508/gpio425/value"
+#define PATH_TO_GPIO_IN_4 "/home/pi/gpio_from_508/gpio426/value"
+#define PATH_TO_GPIO_IN_5 "/home/pi/gpio_from_508/gpio427/value"
+#define PATH_TO_GPIO_IN_6 "/home/pi/gpio_from_508/gpio428/value"
+#define PATH_TO_GPIO_IN_7 "/home/pi/gpio_from_508/gpio429/value"
+#define PATH_TO_GPIO_IN_8 "/home/pi/gpio_from_508/gpio431/value"
+#define PATH_TO_GPIO_IN_9 "/home/pi/gpio_from_508/gpio430/value"
 
-#define PATH_TO_GPIO_OUT  "/sys/class/gpio/gpio433/value"
+#define PATH_TO_GPIO_OUT  "/home/pi/gpio_from_508/gpio433/value"
 
 #endif
 

@@ -21,6 +21,7 @@ public:
         int get_input_detected();
         void push_data(uint8_t * data_in, int len);
 private:
+        bool show_debug = true; // ign added
         QQueue<data_t> queue_empty;
         QQueue<data_t> queue_full;
         void queue_allocate();

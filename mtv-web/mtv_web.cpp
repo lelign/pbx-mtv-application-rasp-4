@@ -11,9 +11,9 @@
 
 #define SETTINGS_SYS_CONFIG_FILE_NAME ("pbx-mtv-508_sys")
 #if (BOARD_REV==0)
-#define PATH_TO_MODEL_DEVICE_FILE "/sys/class/gpio/gpio445/value"
+#define PATH_TO_MODEL_DEVICE_FILE "/home/pi/gpio_from_508/gpio445/value"
 #else
-#define PATH_TO_MODEL_DEVICE_FILE "/sys/class/gpio/gpio477/value"
+#define PATH_TO_MODEL_DEVICE_FILE "/home/pi/gpio_from_508/gpio477/value"
 #endif
 
 
@@ -31,7 +31,9 @@ extern "C" {
 }
 
 Mtv_web::Mtv_web(PbxMtvSystem *mtvsystem, Hardware_diagnostics *hardware_diagnostics, Layout *layout) :
+//Mtv_web::Mtv_web(PbxMtvSystem *mtvsystem, Hardware_diagnostics *hardware_diagnostics) :
     mtvsystem(mtvsystem), hardware_diagnostics(hardware_diagnostics), layout(layout)
+    //mtvsystem(mtvsystem), hardware_diagnostics(hardware_diagnostics)
 {
     qCDebug(category) << "Class creating...";
 
@@ -50,6 +52,7 @@ Mtv_web::Mtv_web(PbxMtvSystem *mtvsystem, Hardware_diagnostics *hardware_diagnos
 
     uptime_utils = new Uptime_utils;
     tsl_server   = new TslServer;
+
     web_server   = new WebSocketServer(PORT, 0);
 
     connect(web_server, SIGNAL(signal_web_new_client(QWebSocket*)), this,
@@ -61,24 +64,27 @@ Mtv_web::Mtv_web(PbxMtvSystem *mtvsystem, Hardware_diagnostics *hardware_diagnos
 
     connect(hardware_diagnostics, &Hardware_diagnostics::signal_hardware_state, this, &Mtv_web::slot_hardware_state);
     connect(hardware_diagnostics, &Hardware_diagnostics::signal_fan_state,      this, &Mtv_web::slot_fan_state);
-
+    /*
     connect(layout, &Layout::signal_preset, this, &Mtv_web::slot_setPreset);
     connect(layout, &Layout::signal_solo, this, &Mtv_web::slot_set_solo);
     connect(layout, &Layout::signal_cascade_device_connected,    this, &Mtv_web::slot_set_cascade_data);
     connect(layout, &Layout::signal_cascade_server_readyRead,    this, &Mtv_web::slot_cascade_server_readyRead);
     connect(layout, &Layout::signal_cascade_device_data_receive, this, &Mtv_web::slot_cascade_slave_data_receive);
-
+    */
     connect(tsl_server, &TslServer::message, this, &Mtv_web::slot_tls_message);
     connect(tsl_server, &TslServer::message, this, &Mtv_web::slot_TLS_TimeCounterCtrl);
 
     Settings_Read();
 
-    remote_ctrl_preset->udate_colorLed(layout->layout_preset.index);
+    //remote_ctrl_preset->udate_colorLed(layout->layout_preset.index);
 
     model_device = get_model_device();
+    //qDebug() << "begin 82";
     std::srand(std::time(nullptr));
     rand_value = std::rand();
-
+    qDebug() << "mtv_web.cpp 85 "
+                "\n\t\tmodel_device : " << model_device <<
+                "\n\t\trand_value : " << rand_value;
 }
 
  Mtv_web::~Mtv_web()
@@ -368,9 +374,13 @@ void Mtv_web::cmd_set_solo(QJsonObject data_obj)
 /*---------------------------------------------------------------------------*/
 void Mtv_web::set_sys_conf()
 {
+    qDebug() << "set_sys_conf";
     update_timezone(time_zone.toStdString().c_str());
+    qDebug() << "update_timezone";
     update_resolvconf(dns_name.toStdString().c_str());
+    qDebug() << "update_resolveconf";
     ntpdate_server(ntp_server.toStdString().c_str());
+    qDebug() << "ntpdate_server";
 }
 /*---------------------------------------------------------------------------*/
 void Mtv_web::cmd_set_config(QJsonObject data_obj)
@@ -1152,25 +1162,34 @@ QJsonObject sys_obj;
 /*---------------------------------------------------------------------------*/
 void Mtv_web::Settings_Read(){
 
-    QSettings settings(QSettings::SystemScope, SETTINGS_SYS_CONFIG_FILE_NAME);
+    //qDebug() << "begin 1158";
 
+    QSettings settings(QSettings::SystemScope, SETTINGS_SYS_CONFIG_FILE_NAME);
+    //qDebug() << "begin 1161";
     settings.beginGroup("time");
         ntp_server = settings.value("npt_server", "pool.ntp.org" ).toString();
         time_zone   = settings.value("timezone",  "Europe/Moscow").toString();
     settings.endGroup();
-
+    //qDebug() << "begin 1166";
     settings.beginGroup("DNS");
         dns_name = settings.value("dns_name", "8.8.4.4").toString();
     settings.endGroup();
-
+    //qDebug() << "begin 1170";
     set_sys_conf();
-
+    qDebug() << "mtv_web.cpp 1178 "
+             "\n\t\tntp_server : " << ntp_server
+             << "\n\t\t\dns_name : " << dns_name
+             << "\n\t\ttime_zone : " << time_zone;
 } // End "Settings_Read"
+
+void Mtv_web::Check(){
+    qDebug() << "void check";
+}
 /*---------------------------------------------------------------------------*/
 void Mtv_web::Settings_Write(){
-
+    //qDebug() << "begin 1180";
     QSettings settings(QSettings::SystemScope, SETTINGS_SYS_CONFIG_FILE_NAME);
-
+    //qDebug() << "begin 1182";
     settings.beginGroup("time");
         settings.setValue("npt_server", ntp_server);
         settings.setValue("timezone",   time_zone);
@@ -1179,7 +1198,7 @@ void Mtv_web::Settings_Write(){
     settings.beginGroup("DNS");
         settings.setValue("dns_name", dns_name);
     settings.endGroup();
-
+    qDebug() << "mtv_web.cpp 1191 Settings_Write()";
 } // End "Settings_Write"
 /*---------------------------------------------------------------------------*/
 void Mtv_web::get_network_setting()
@@ -1206,6 +1225,7 @@ static const char *eth0="eth0";
             if(netInterface.name() == "eth0")   network_0.mac = netInterface.hardwareAddress();
         }
      }
+    qDebug() << "mtv_web.cpp 1223 \t\tnetwork_0.mac : " << network_0.mac;
 }
 /*---------------------------------------------------------------------------*/
 QByteArray Mtv_web::get_json_layout_presets()

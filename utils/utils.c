@@ -31,9 +31,11 @@ unsigned int system_uptime(void)
 void update_timezone(const char * timezone)
 {
         char buf[256];
-
+        //printf("update_timezone 34!\n");
         snprintf(buf, sizeof(buf), timezone_format, timezone);
+        //printf("update_timezone 36!\n");
         system(buf);
+        //printf("update_timezone 38!\n");
 
 }
 
