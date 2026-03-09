@@ -145,3 +145,4 @@ INSTALL(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/pbx-mtv-508 DESTINATION bin)
 #target_link_libraries(rgbyuv-test Qt5::Widgets)
 
 #INSTALL(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/rgbyuv-test DESTINATION bin)
+ # for check git in qr-creator
