@@ -79,6 +79,7 @@ Mtv_web::Mtv_web(PbxMtvSystem *mtvsystem, Hardware_diagnostics *hardware_diagnos
     //remote_ctrl_preset->udate_colorLed(layout->layout_preset.index);
 
     model_device = get_model_device();
+    model_device = 4; // for PBX-MTV-5161
     //qDebug() << "begin 82";
     std::srand(std::time(nullptr));
     rand_value = std::rand();
@@ -97,6 +98,10 @@ Mtv_web::Mtv_web(PbxMtvSystem *mtvsystem, Hardware_diagnostics *hardware_diagnos
 /*---------------------------------------------------------------------------*/
 int Mtv_web::get_model_device(){
     #if (BOARD_REV==0)
+    qDebug() << "mtv_web.cpp 100 " <<
+        "\n\t\tBOARD_REV : " << BOARD_REV <<
+        "\n\t\tPATH_TO_MODEL_DEVICE_FILE : " << PATH_TO_MODEL_DEVICE_FILE <<
+        "\n\t\tget PATH_TO_MODEL_DEVICE_FILE : " << get_value(PATH_TO_MODEL_DEVICE_FILE);
     if(get_value(PATH_TO_MODEL_DEVICE_FILE))
         return 0;
     else
