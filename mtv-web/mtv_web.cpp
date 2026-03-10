@@ -79,7 +79,8 @@ Mtv_web::Mtv_web(PbxMtvSystem *mtvsystem, Hardware_diagnostics *hardware_diagnos
     //remote_ctrl_preset->udate_colorLed(layout->layout_preset.index);
 
     model_device = get_model_device();
-    model_device = 4; // for PBX-MTV-5161
+    if (MTV_PBX_5161)
+        model_device = 4; // for PBX-MTV-5161
     //qDebug() << "begin 82";
     std::srand(std::time(nullptr));
     rand_value = std::rand();
@@ -482,6 +483,7 @@ void Mtv_web::parser_sdi_input_label(QJsonArray jsonArray)
             break;
         layout->layout_object[i].sdi_label = jsonArray[i].toString();
     }
+    qDebug() << "mtv_web.cpp 486 int layout_object_size : " << layout_object_size;
 }
 /*---------------------------------------------------------------------------*/
 void Mtv_web::apply_new_conig()
@@ -493,6 +495,7 @@ void Mtv_web::apply_new_conig()
     emit signal_reconfigure();
 
     QByteArray to_send_data = get_json_settings();
+    qDebug() << "mtv_web.cpp 498 int to_send_data : \n" << to_send_data.size();
     web_server->sendall(to_send_data);
 }
 /*---------------------------------------------------------------------------*/

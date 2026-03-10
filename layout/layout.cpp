@@ -888,16 +888,16 @@ int x1, x2;
 
 QString Layout::sdi_key_name(int i)
 {
-    int major = (i >>   3) + 1;
-    int minor = (i & 0x07) + 1;
+    int major = (i >> 4) + 1; // int major = (i >>   3) + 1; сдвинуть вправо на три бита и добавить 1 до 16 нужно 4 бита
+    int minor = (i & 0x0f) + 1; //int minor = (i & 0x07) + 1; замаскировать
     return QString("%1.%2").arg(major).arg(minor);
 }
 
 void Layout::Settings_Read(){
 
     QSettings settings(QSettings::SystemScope, SETTINGS_SDI_INPUT_FILE_NAME);
-
-    settings.beginGroup("sdi_input");
+    
+    settings.beginGroup("sdi_input");    
         for(uint i = 0; i < SizeOfArray(layout_object); i++){
             QString key_name = QString("label_%1").arg(sdi_key_name(i));
             QString default_value = QString("Input %1").arg(sdi_key_name(i));
@@ -956,7 +956,7 @@ void Layout::Settings_Write(){
 
     settings.beginGroup("sdi_input");
         for(uint i = 0; i < SizeOfArray(layout_object); i++){
-            QString key_name = QString("label_%1").arg(sdi_key_name(i));
+            QString key_name = QString("key_name_959 label_%1").arg(sdi_key_name(i));
             settings.setValue(key_name, layout_object[i].sdi_label);
         }
     settings.endGroup();
@@ -969,7 +969,7 @@ void Layout::Settings_Write(){
     settings.beginGroup("layout_preset");
         settings.setValue("index", layout_preset.index);
         for(int i = 0; i < layout_preset.name.size(); ++i){
-            QString key_name = QString("preset_%1").arg(i);
+            QString key_name = QString("layout.cpp  972 preset_%1").arg(i);
             settings.setValue(key_name, layout_preset.name[i]);
         }
     settings.endGroup();
@@ -2206,9 +2206,9 @@ int cascade_num, input;
     input   = in_num + 1;
 
     if(cascade.mode == Layout::STAND_ALONE)
-        str = QString("%1").arg(input);
+        str = QString("layout.cpp  2209 %1").arg(input);
     else
-        str = QString("%1.%2").arg(cascade_num).arg(input);
+        str = QString("layout.cpp  2211 %1.%2").arg(cascade_num).arg(input);
 
     return str;
 }

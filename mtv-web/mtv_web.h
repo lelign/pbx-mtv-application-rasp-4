@@ -51,6 +51,7 @@ public slots:
     void slot_setPreset(int presetIndex);
 
 private:
+    bool MTV_PBX_5161 = true;
     PbxMtvSystem         *mtvsystem;
     Hardware_diagnostics *hardware_diagnostics;
     Layout               *layout;

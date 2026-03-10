@@ -858,7 +858,7 @@ QString PbxMtvSystem::get_sdi_format_str(int index)
                 return "1080p25";
         default:
         case 15:
-                return "LOSS";
+                return "LOSS is here ?";
         }
 
         return "";
