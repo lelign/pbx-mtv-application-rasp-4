@@ -60,22 +60,22 @@ include_directories(${Qt5Svg_INCLUDE_DIRS})
 
 message(STATUS "include_directories Qt5Svg  ${Qt5Svg_INCLUDE_DIRS}")
 
-#include_directories(${Qt5Core_INCLUDE_DIRS})
+include_directories(${Qt5Core_INCLUDE_DIRS})
 
 message(STATUS "include_directories Qt5Core  ${Qt5Svg_INCLUDE_DIRS}")
 
-#include_directories(${Qt5Network_INCLUDE_DIRS})
-#include_directories(${Qt5WebSockets_INCLUDE_DIRS})
+include_directories(${Qt5Network_INCLUDE_DIRS})
+include_directories(${Qt5WebSockets_INCLUDE_DIRS})
 include_directories(${LIBUSB_1_INCLUDE_DIRS})
-#include_directories(${LIBBITSTREAM_INCLUDE_DIR})
+include_directories(${LIBBITSTREAM_INCLUDE_DIR})
 #message(STATUS "include_directories LIBBITSTREAM_INCLUDE_DIR  ${LIBBITSTREAM_INCLUDE_DIR}")
 include_directories(${ZVBI_INCLUDE_DIRS})
-#include_directories(tsl)
+include_directories(tsl)
 SET (CMAKE_POSITION_INDEPENDENT_CODE ON)
 SET (CMAKE_AUTORCC ON)
 
 add_subdirectory(zvbi-test)
-#add_subdirectory(profnext)
+add_subdirectory(profnext)
 add_subdirectory(tsl)
 
 add_executable(pbx-mtv-508
