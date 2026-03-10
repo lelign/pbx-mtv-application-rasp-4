@@ -37,6 +37,5 @@
             изменил также на будущее
             mtv_web.cpp => get_json_module_sdi_format()
         почистил то, что deprecated (width -> horizontalAdvance)
-
-
+        добавил все задания в CMakelists.txt, собирается, работает!!!
             
