@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
         QApplication a(argc, argv);
         qDebug() << "PBX-MTV-508 application";
-        /*
+        
         QCommandLineParser parser;
         QCommandLineOption watchdog_option("w", "watchdog");
         parser.setApplicationDescription("PBX-MTV-508 applicaton");
@@ -29,9 +29,8 @@ int main(int argc, char *argv[])
         signal(SIGPIPE, SIG_IGN);
 
         bool watchdog = parser.isSet(watchdog_option);
-        */
-        //PbxMtv508 mtv508(watchdog);
-        PbxMtv508 mtv508;
+        PbxMtv508 mtv508(watchdog);
+
 
         return a.exec();
 }

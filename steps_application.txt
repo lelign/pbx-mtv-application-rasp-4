@@ -25,6 +25,7 @@
             2 в qt-creator указал новый путь для сборки
             3 через git clone восстановил исходники
             4 в qt-creator восстановил настроки что собирать и как запускать (run in terminal)
+
 # 10_03 разобрался с порядком нумерации входов на вкладке Inputs Setting, задается в
             layout.cpp 
             QString Layout::sdi_key_name(int i)
@@ -38,10 +39,11 @@
             mtv_web.cpp => get_json_module_sdi_format()
         почистил то, что deprecated (width -> horizontalAdvance)
         добавил все задания в CMakelists.txt, собирается, работает!!!
+
 # 11_03 сборка из под vscode
             add build/ in to .gitignore
             pwd
-            /home/pi/508_source_soft
+                /home/pi/508_source_soft
             mkdir build && cd build
             cmake .. .
             <progress in cmake_progress.txt>

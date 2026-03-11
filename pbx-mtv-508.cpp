@@ -17,7 +17,8 @@ void data_ready(uint8_t * data, int len, void * ctx)
 }
 
 //PbxMtv508::PbxMtv508(bool watchdog)
-PbxMtv508::PbxMtv508()
+//PbxMtv508::PbxMtv508()
+PbxMtv508::PbxMtv508(bool watchdog)
 {
     qDebug() << "Program start";
 

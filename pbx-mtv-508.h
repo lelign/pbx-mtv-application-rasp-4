@@ -27,8 +27,8 @@ class PbxMtv508 : public QObject
     Q_OBJECT
 public:
    // HlsServer       *hlsserver;
-    //explicit PbxMtv508(bool watchdog=0);
-    explicit PbxMtv508();
+    explicit PbxMtv508(bool watchdog=0);
+    //explicit PbxMtv508();
     ~PbxMtv508();
     Eventlog *eventlog;
 
@@ -54,7 +54,7 @@ private:
     Hardware_diagnostics *hardware_diagnostics;
     mb86m26_control *m26_control;
     //Factory_defaults *factory_defaults;
-    //Watchdog        *watchdog;
+    Watchdog        *watchdog;
     Gpio            *gpio;
     //File_handle_leaks *file_handle_leaks;
     //Scte_104        *scte_104[8];
