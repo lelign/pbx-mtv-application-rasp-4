@@ -1,4 +1,4 @@
- #include "pbx-mtv-508.h"
+#include "pbx-mtv-508.h"
 #include "str-system/video_info.h"
 #include "board_config.h"
 
@@ -16,44 +16,43 @@ void data_ready(uint8_t * data, int len, void * ctx)
     free(data);
 }
 
-//PbxMtv508::PbxMtv508(bool watchdog)
 //PbxMtv508::PbxMtv508()
 PbxMtv508::PbxMtv508(bool watchdog)
 {
     qDebug() << "Program start";
 
-    //this->watchdog = new Watchdog(watchdog);
+    this->watchdog = new Watchdog(watchdog);
 
     //hdmi_adv7513 = new Hdmi_adv7513();
 
     mtvsystem = new PbxMtvSystem;
-    // connect(mtvsystem->anc_reader, &AncReader::scte_104_data, this, &PbxMtv508::slot_scte_104_data);
-    // connect(mtvsystem->anc_reader, &AncReader::op47_data, this, &PbxMtv508::slot_op47_data);
-    // connect(mtvsystem->anc_reader, &AncReader::op42_data, this, &PbxMtv508::slot_op42_data);
+    connect(mtvsystem->anc_reader, &AncReader::scte_104_data, this, &PbxMtv508::slot_scte_104_data);
+    connect(mtvsystem->anc_reader, &AncReader::op47_data, this, &PbxMtv508::slot_op47_data);
+    connect(mtvsystem->anc_reader, &AncReader::op42_data, this, &PbxMtv508::slot_op42_data);
     gpio = new Gpio;
-    //teletext_decoder = new TeletextDecoder;
+    teletext_decoder = new TeletextDecoder;
 
-    //connect(teletext_decoder, &TeletextDecoder::txtpage, this, &PbxMtv508::slot_txt_page);
+    connect(teletext_decoder, &TeletextDecoder::txtpage, this, &PbxMtv508::slot_txt_page);
 
     eventlog = new Eventlog;
     eventlog->add(Eventlog::SYSTEM, "--- Start the program ---");
 
     m26_control = new mb86m26_control(this, QString(M26_GPIO));
-   // hlsserver = new HlsServer("/var/volatile/hls/");
+    hlsserver = new HlsServer("/var/volatile/hls/");
 
     layout = new Layout(mtvsystem, m26_control, gpio, eventlog);
 
 
     hardware_diagnostics = new Hardware_diagnostics;
-    // connect(hardware_diagnostics, &Hardware_diagnostics::signal_over_temperature,
-     //                       this, &PbxMtv508::slot_over_temperature);
-    // connect(hardware_diagnostics, &Hardware_diagnostics::signal_fan_state,
-     //                       this, &PbxMtv508::slot_fan_state);
+    connect(hardware_diagnostics, &Hardware_diagnostics::signal_over_temperature,
+                           this, &PbxMtv508::slot_over_temperature);
+    connect(hardware_diagnostics, &Hardware_diagnostics::signal_fan_state,
+                           this, &PbxMtv508::slot_fan_state);
 
     mtv_web   = new Mtv_web(mtvsystem, hardware_diagnostics, layout);
     //mtv_web   = new Mtv_web(mtvsystem, hardware_diagnostics);
-    // connect(mtv_web, &Mtv_web::signal_reconfigure, this, &PbxMtv508::slot_web_reconfigure);
-    /*
+    connect(mtv_web, &Mtv_web::signal_reconfigure, this, &PbxMtv508::slot_web_reconfigure);
+    
     m26_control->set_std(STD_1080p25);
     m26_control->set_output_std(mb86m26_control::STD_OUT_1080);
     m26_control->set_aux_audio_enable(0);
@@ -68,7 +67,7 @@ PbxMtv508::PbxMtv508(bool watchdog)
     m26_control->set_gop(mb86m26_control::IBBP);
     m26_control->set_gop_mode(mb86m26_control::GOP_CLOSED);
     mtvsystem->set_dei(1);
-    */
+    
     #if (BOARD_REV==0)
     /*
     factory_defaults  = new Factory_defaults;

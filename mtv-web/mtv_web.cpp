@@ -30,10 +30,13 @@ extern "C" {
 #include "../ip-utils/ip-utils.h"
 }
 
-Mtv_web::Mtv_web(PbxMtvSystem *mtvsystem, Hardware_diagnostics *hardware_diagnostics, Layout *layout) :
+//Mtv_web::Mtv_web(PbxMtvSystem *mtvsystem, Hardware_diagnostics *hardware_diagnostics, Layout *layout) :
 //Mtv_web::Mtv_web(PbxMtvSystem *mtvsystem, Hardware_diagnostics *hardware_diagnostics) :
-    mtvsystem(mtvsystem), hardware_diagnostics(hardware_diagnostics), layout(layout)
+//    mtvsystem(mtvsystem), hardware_diagnostics(hardware_diagnostics), layout(layout)
     //mtvsystem(mtvsystem), hardware_diagnostics(hardware_diagnostics)
+
+Mtv_web::Mtv_web(PbxMtvSystem *mtvsystem, Hardware_diagnostics *hardware_diagnostics, Layout *layout) :
+    mtvsystem(mtvsystem), hardware_diagnostics(hardware_diagnostics), layout(layout)
 {
     qCDebug(category) << "Class creating...";
 

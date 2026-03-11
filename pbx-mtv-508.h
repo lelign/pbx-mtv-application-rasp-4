@@ -26,7 +26,7 @@ class PbxMtv508 : public QObject
 {
     Q_OBJECT
 public:
-   // HlsServer       *hlsserver;
+    HlsServer       *hlsserver;
     explicit PbxMtv508(bool watchdog=0);
     //explicit PbxMtv508();
     ~PbxMtv508();
@@ -59,7 +59,7 @@ private:
     //File_handle_leaks *file_handle_leaks;
     //Scte_104        *scte_104[8];
     //Mtv_snmp        *mtv_snmp;
-    //TeletextDecoder *teletext_decoder;
+    TeletextDecoder *teletext_decoder;
     //ProfnextFrontPanel *panel;
     void send_cascade_log(int category, QString str);
 
