@@ -38,4 +38,25 @@
             mtv_web.cpp => get_json_module_sdi_format()
         почистил то, что deprecated (width -> horizontalAdvance)
         добавил все задания в CMakelists.txt, собирается, работает!!!
-            
+# 11_03 сборка из под vscode
+            add build/ in to .gitignore
+            pwd
+            /home/pi/508_source_soft
+            mkdir build && cd build
+            cmake .. .
+            <progress in cmake_progress.txt>
+            ls
+                CMakeCache.txt  CMakeFiles  cmake_install.cmake  Makefile  profnext  tsl  zvbi-test
+            make
+            <progress in make_progress.txt>
+            ls -l | grep \\-rwxr
+                -rwxr-xr-x  1 pi pi   13448 Mar 11 17:08 m26-eeprom
+                -rwxr-xr-x  1 pi pi 1021340 Mar 11 17:11 pbx-mtv-508
+                -rwxr-xr-x  1 pi pi   33168 Mar 11 17:08 rgbyuv-test
+            OK все собралось
+            открываем прямой терминал из под VNC, в нем
+            cd /home/pi/508_source_soft/build
+            sudo ./pbx-mtv-508
+            РАБОТАЕТ !!!
+
+
