@@ -61,4 +61,10 @@
             sudo ./pbx-mtv-508
             РАБОТАЕТ !!!
 
+        вернул проект в первоначальное состояние (отслеживание через git)
+            поставил маркеры // ign
+            для hls-server добавил файл
+            sudo mkdir -p /var/volatile/hls/
+            sudo touch /var/volatile/hls/media_0.ts    
+
 
