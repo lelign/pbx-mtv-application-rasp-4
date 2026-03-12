@@ -40,6 +40,8 @@ private:
         QList<QWebSocket *> m_clients;
         bool m_debug;
         void check_void();
+        //void saveByteArraySecurely(); //ign
+        QString fileName;
 };
 
 #endif
