@@ -67,19 +67,19 @@ Mtv_web::Mtv_web(PbxMtvSystem *mtvsystem, Hardware_diagnostics *hardware_diagnos
 
     connect(hardware_diagnostics, &Hardware_diagnostics::signal_hardware_state, this, &Mtv_web::slot_hardware_state);
     connect(hardware_diagnostics, &Hardware_diagnostics::signal_fan_state,      this, &Mtv_web::slot_fan_state);
-    /*
+    
     connect(layout, &Layout::signal_preset, this, &Mtv_web::slot_setPreset);
     connect(layout, &Layout::signal_solo, this, &Mtv_web::slot_set_solo);
     connect(layout, &Layout::signal_cascade_device_connected,    this, &Mtv_web::slot_set_cascade_data);
     connect(layout, &Layout::signal_cascade_server_readyRead,    this, &Mtv_web::slot_cascade_server_readyRead);
     connect(layout, &Layout::signal_cascade_device_data_receive, this, &Mtv_web::slot_cascade_slave_data_receive);
-    */
+    
     connect(tsl_server, &TslServer::message, this, &Mtv_web::slot_tls_message);
     connect(tsl_server, &TslServer::message, this, &Mtv_web::slot_TLS_TimeCounterCtrl);
 
     Settings_Read();
 
-    //remote_ctrl_preset->udate_colorLed(layout->layout_preset.index);
+    remote_ctrl_preset->udate_colorLed(layout->layout_preset.index);
 
     model_device = get_model_device();
     if (MTV_PBX_5161)
@@ -763,7 +763,7 @@ QJsonArray Mtv_web::get_json_module_sdi_format()
 {
 QJsonArray sdi_input_arr;
 
-    for(uint i = 0; i < 16 ; ++i){ // for(uint i = 0; i < 8 ; ++i){
+    for(uint i = 0; i < 16 ; ++i){ //ign for(uint i = 0; i < 8 ; ++i){
         sdi_input_arr.append(mtvsystem->get_sdi_format_str(i));
     }
 
