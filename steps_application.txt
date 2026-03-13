@@ -75,4 +75,10 @@
 
 13_03   разбирался с назначением GPIO и адресоцией /dev*
         свел все в файл gpio_assign.txt
+
         увеличил количество создаваемых Scte_104 до 16
+
+        in raspberry terminal create /dev/mtv-overlay
+        sudo mknod /dev/mtv-overlay c 249 0
+        mtv-system/mtv-system.cpp 727 added try/catch for /dev/mtv-overlay
+        # check => no catch ? it's work
