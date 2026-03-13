@@ -1,5 +1,5 @@
 #include "snmp_agent.h"
-
+#include <QLoggingCategory> // ign
 #define OID_PROFITT ".1.3.6.1.4.1.52035"
 #define PONG     "PONG"
 #define PING     "PING"
@@ -17,9 +17,10 @@ enum {CMD_GET, CMD_SET, CMD_GET_NEXT};
 
 Snmp_Agent::Snmp_Agent(QObject *parent) : QObject(parent)
 {
+    static QLoggingCategory category("SNMP-AGENT");
     cmd_type = CMD_GET;
 
-    qDebug() << "snmp agent created";
+    qDebug(category) << "snmp agent created";
 
     socket = new QLocalSocket(this);
     in = new QTextStream(socket);

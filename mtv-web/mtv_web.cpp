@@ -224,7 +224,7 @@ QJsonValue val;
                 cmd_set_config(data_obj);
             }
             else{
-                qDebug() << "Configuration not JsonObject";
+                qDebug(category) << "slot_web_message() set_config Configuration not JsonObject";
             }
         }
         if(val.toString() == "set_solo"){
@@ -233,7 +233,8 @@ QJsonValue val;
                 cmd_set_solo(data_obj);
             }
             else{
-                qDebug() << "Configuration not JsonObject";
+                qDebug(category) << "slot_web_message() Configuration not JsonObject obj.value(data).isObject() : " 
+                        << obj.value("data").isObject();
             }
         }
         if(val.toString() == "set_preset"){
@@ -242,7 +243,7 @@ QJsonValue val;
                 cmd_set_preset(data_obj);
             }
             else{
-                qDebug() << "Configuration not JsonObject";
+                qDebug(category) << "set_preset Configuration not JsonObject";
             }
         }
         if(val.toString() == "set_time"){
@@ -495,7 +496,7 @@ void Mtv_web::parser_sdi_input_label(QJsonArray jsonArray)
             break;
         layout->layout_object[i].sdi_label = jsonArray[i].toString();
     }
-    qDebug() << "mtv_web.cpp 486 int layout_object_size : " << layout_object_size;
+    qDebug(category) << "486 int layout_object_size : " << layout_object_size;
 }
 /*---------------------------------------------------------------------------*/
 void Mtv_web::apply_new_conig()
@@ -507,7 +508,7 @@ void Mtv_web::apply_new_conig()
     emit signal_reconfigure();
 
     QByteArray to_send_data = get_json_settings();
-    qDebug() << "mtv_web.cpp 498 int to_send_data : \n" << to_send_data.size();
+    qDebug(category) << "98 int to_send_data : " << to_send_data.size();
     web_server->sendall(to_send_data);
 }
 /*---------------------------------------------------------------------------*/
@@ -1238,7 +1239,7 @@ static const char *eth0="eth0";
             if(netInterface.name() == "eth0")   network_0.mac = netInterface.hardwareAddress();
         }
      }
-    qDebug() << "mtv_web.cpp 1223 \t\tnetwork_0.mac : " << network_0.mac;
+    qDebug(category) << "1242 \t\tnetwork_0.mac : " << network_0.mac;
 }
 /*---------------------------------------------------------------------------*/
 QByteArray Mtv_web::get_json_layout_presets()

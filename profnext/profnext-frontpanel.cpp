@@ -243,7 +243,7 @@ ProfnextFrontPanel::ProfnextFrontPanel(QString port)
         uart->setPortName(port);
         uart->setBaudRate(QSerialPort::Baud115200);
         if (!uart->open(QIODevice::ReadWrite)) {
-                qDebug() << "Failed to open serial port for front panel";
+                qDebug(category) << "Failed to open serial port for front panel";
                 return;
         }
         connect(uart, &QSerialPort::readyRead, this, &ProfnextFrontPanel::serial_read);

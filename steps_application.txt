@@ -66,9 +66,13 @@
             для hls-server добавил файл
             sudo mkdir -p /var/volatile/hls/
             sudo touch /var/volatile/hls/media_0.ts
+
 #12_03  make clean && cmake .. . && make -j$(proc) (build faster via vscode)
             вернул, то, что забыл в mtv_web.cpp
             устранил ошибку ->  пропадание значений <LOSS> на вкдаке Status -> Inputs  Format
             через 10 секунд после старта приложения, много чего узнал
             исправления в mtv_web.cpp 191-199
 
+13_03   разбирался с назначением GPIO и адресоцией /dev*
+        свел все в файл gpio_assign.txt
+        увеличил количество создаваемых Scte_104 до 16

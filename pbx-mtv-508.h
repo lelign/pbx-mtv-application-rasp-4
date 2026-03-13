@@ -57,7 +57,7 @@ private:
     Watchdog        *watchdog;
     Gpio            *gpio;
     File_handle_leaks *file_handle_leaks;
-    Scte_104        *scte_104[8];
+    Scte_104        *scte_104[16]; // Scte_104        *scte_104[8]; // ign
     Mtv_snmp        *mtv_snmp;
     TeletextDecoder *teletext_decoder;
     ProfnextFrontPanel *panel;

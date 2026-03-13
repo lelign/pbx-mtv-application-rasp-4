@@ -86,7 +86,7 @@ PbxMtv508::PbxMtv508(bool watchdog)
      connect(mtvsystem->anc_reader, &AncReader::op47_data, layout, &Layout::slot_op47_data);
      connect(mtvsystem->anc_reader, &AncReader::op42_data, layout, &Layout::slot_op47_data);
     
-    for(int i = 0; i < 8; ++i){
+    for(int i = 0; i < 16; ++i){ // for(int i = 0; i < 8; ++i) // ign
         scte_104[i] = new Scte_104(i);
         connect(scte_104[i], &Scte_104::signal_update_scte_104, layout, &Layout::slot_splice);
         connect(scte_104[i], &Scte_104::signal_scte_104_in,  this, &PbxMtv508::slot_scte_104_in);

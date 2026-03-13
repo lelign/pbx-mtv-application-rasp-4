@@ -21,7 +21,7 @@ WebSocketServer::WebSocketServer(quint16 port, bool debug, QObject *parent) :
        
         if (m_pWebSocketServer->listen(QHostAddress::Any, port)){
                 if (m_debug)
-                        qDebug() << "WebSocketServer listening on port" << port;
+                        qDebug(category) << "WebSocketServer listening on port" << port;
                 connect(m_pWebSocketServer, &QWebSocketServer::newConnection,
                         this, &WebSocketServer::onNewConnection);
                 connect(m_pWebSocketServer, &QWebSocketServer::closed, this, &WebSocketServer::closed);
@@ -119,7 +119,7 @@ void WebSocketServer::processTextMessage(QString message)
     QWebSocket *pClient = qobject_cast<QWebSocket *>(sender());
 
     if (m_debug)
-        qDebug() << "Message received:" << message;
+        qDebug(category) << "Message received:" << message;
 
     parse_message(pClient, message);
 }
@@ -131,7 +131,7 @@ void WebSocketServer::socketDisconnected()
 {
         QWebSocket *pClient = qobject_cast<QWebSocket *>(sender());
         if (m_debug)
-                qDebug() << "socketDisconnected:" << pClient;
+                qDebug(category) << "socketDisconnected:" << pClient;
         if (pClient){
                 m_clients.removeAll(pClient);
                 pClient->deleteLater();

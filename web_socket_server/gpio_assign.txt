@@ -1,0 +1,109 @@
+factory_defaults/factory_defaults.cpp
+    #define PATH_TO_RESET_BUTTON_FILE "/sys/class/gpio/gpio444/value"
+
+gpio/gpio.cpp
+    #if (BOARD_REV==0)
+
+        #define PATH_TO_GPIO_IN_0 "/home/pi/gpio_from_508/gpio480/value"
+        #define PATH_TO_GPIO_IN_1 "/home/pi/gpio_from_508/gpio481/value"
+        #define PATH_TO_GPIO_IN_2 "/home/pi/gpio_from_508/gpio482/value"
+        #define PATH_TO_GPIO_IN_3 "/home/pi/gpio_from_508/gpio483/value"
+        #define PATH_TO_GPIO_IN_4 "/home/pi/gpio_from_508/gpio484/value"
+        #define PATH_TO_GPIO_IN_5 "/home/pi/gpio_from_508/gpio485/value"
+        #define PATH_TO_GPIO_IN_6 "/home/pi/gpio_from_508/gpio486/value"
+        #define PATH_TO_GPIO_IN_7 "/home/pi/gpio_from_508/gpio487/value"
+        #define PATH_TO_GPIO_IN_8 "/home/pi/gpio_from_508/gpio489/value"
+        #define PATH_TO_GPIO_IN_9 "/home/pi/gpio_from_508/gpio488/value"
+
+        #define PATH_TO_GPIO_OUT  "/home/pi/gpio_from_508/gpio491/value"
+
+    #else
+
+        #define PATH_TO_GPIO_IN_0 "/home/pi/gpio_from_508/gpio422/value"
+        #define PATH_TO_GPIO_IN_1 "/home/pi/gpio_from_508/gpio423/value"
+        #define PATH_TO_GPIO_IN_2 "/home/pi/gpio_from_508/gpio424/value"
+        #define PATH_TO_GPIO_IN_3 "/home/pi/gpio_from_508/gpio425/value"
+        #define PATH_TO_GPIO_IN_4 "/home/pi/gpio_from_508/gpio426/value"
+        #define PATH_TO_GPIO_IN_5 "/home/pi/gpio_from_508/gpio427/value"
+        #define PATH_TO_GPIO_IN_6 "/home/pi/gpio_from_508/gpio428/value"
+        #define PATH_TO_GPIO_IN_7 "/home/pi/gpio_from_508/gpio429/value"
+        #define PATH_TO_GPIO_IN_8 "/home/pi/gpio_from_508/gpio431/value"
+        #define PATH_TO_GPIO_IN_9 "/home/pi/gpio_from_508/gpio430/value"
+
+        #define PATH_TO_GPIO_OUT  "/home/pi/gpio_from_508/gpio433/value"
+
+        #endif
+
+hardware_diagnostics/hardware_diagnostics.cpp
+    #define PATH_TO_FAN_STATE       ("/home/pi/gpio_from_508/gpio501/value")
+    #define PATH_TO_FAN_STATE_RESET ("/home/pi/gpio_from_508/gpio502/value")
+
+    #define PATH_TO_FILE_POWER_CONSUMPTION ("/home/pi/hwmon/hwmon0/power1_input")
+    #define PATH_TO_FILE_NAME_TEMP         ("/home/pi/hwmon/hwmon1/temp1_input")
+
+led/led_class.cpp
+    #if (BOARD_REV==0)
+        "/home/pi/gpio_from_508/gpio504/value", /* led 1 */
+        "/home/pi/gpio_from_508/gpio506/value", /* led 2 */
+        "/home/pi/gpio_from_508/gpio508/value", /* led 3 */
+        "/home/pi/gpio_from_508/gpio510/value", /* led 4 */
+        "/home/pi/gpio_from_508/gpio505/value", /* led 5 */
+        "/home/pi/gpio_from_508/gpio507/value", /* led 6 */
+        "/home/pi/gpio_from_508/gpio509/value", /* led 7 */
+        "/home/pi/gpio_from_508/gpio511/value"  /* led 8 */
+        #else
+        "/home/pi/gpio_from_508/gpio439/value", /* led 1 */
+        "/home/pi/gpio_from_508/gpio441/value", /* led 2 */
+        "/home/pi/gpio_from_508/gpio443/value", /* led 3 */
+        "/home/pi/gpio_from_508/gpio445/value", /* led 4 */
+        "/home/pi/gpio_from_508/gpio447/value", /* led 5 */
+        "/home/pi/gpio_from_508/gpio449/value", /* led 6 */
+        "/home/pi/gpio_from_508/gpio451/value", /* led 7 */
+        "/home/pi/gpio_from_508/gpio453/value"  /* led 8 */
+        #endif
+
+m26/m26-eeprom.cpp  <== !!! /var/spirom_writer_usb_c.bin NOT EXIST !!!
+    #define FIRMWARE_FILE "/var/spirom_writer_usb_c.bin"
+    //#define GPIO_VALUE "/sys/class/gpio/%s/value"
+    #define GPIO_VALUE "/home/pi/gpio_from_508/%s/value"
+
+mtv-web/mtv_web.cpp
+    #if (BOARD_REV==0)
+        #define PATH_TO_MODEL_DEVICE_FILE "/home/pi/gpio_from_508/gpio445/value"
+    #else
+        #define PATH_TO_MODEL_DEVICE_FILE "/home/pi/gpio_from_508/gpio477/value"
+    #endif
+
+mtv-system/mtv-system.cpp <== /dev/mtv-overlay
+    //f = open("/dev/mtv-overlay", O_WRONLY);
+    f = open("/dev/media3", O_WRONLY); // ign
+
+zvbi-test/anc-dump.c <== /dev/tsin1
+    #define ANCIN ("/dev/tsin1")
+
+pbx-mtv-508.cpp <== /dev/ttyS1
+    #if (BOARD_REV==1)
+        panel = new ProfnextFrontPanel("/dev/ttyS1");
+
+watchdog.cpp  <== /dev/watchdog  exist
+    const char * WATCHDOG_FILE = "/dev/watchdog";
+
+hdmi_adv7513/hdmi_adv7513.cpp
+    #if (BOARD_REV==0)
+        static const char * i2c_filename = "/dev/i2c-0";
+    #else
+        static const char * i2c_filename = "/dev/i2c-1";
+    #endif
+
+m26/mpeg-dump.cpp
+    f = fopen("/dev/shm/dump.ts", "w+");
+
+mtv-system/mtv-system.cpp /dev/tty10 ??? /dev/str-mem  <== NOT EXIST in rasp ERR?
+    const char * fname = "/dev/str-mem";  <== NOT EXIST in rasp ERR?
+    const int video_size = 1920*1080*3;
+    #define MOTION_THR (100)
+    #define ANCIN ("/dev/tty10")
+
+profnext/profnext-test.cpp
+    panel = new ProfnextFrontPanel("/dev/ttyS1");
+

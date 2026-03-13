@@ -276,7 +276,7 @@ PbxMtvSystem::PbxMtvSystem()
         connect(&sdi_format_notify_timer, &QTimer::timeout, this, &PbxMtvSystem::sdi_format_notify_timeout);
         set_audio_source(0);
         reconfigure();
-        qDebug(category) << "278" << ANCIN;
+        qDebug(category) << "278 class" << ANCIN;
         anc_reader = new AncReader(ANCIN, this);
 
         anc_reader->start();
@@ -733,7 +733,7 @@ void PbxMtvSystem::overlay_sync()
         //f = open("/dev/mtv-overlay", O_WRONLY);
         f = open("/dev/media3", O_WRONLY); // ign
         if (show_debug){ // ign
-            qDebug(category) << "mtv-system.cpp 736 cicle size of buffer : " << sizeof(buffer) << " f :" << f; // ign
+            qDebug(category) << "736 cicle size of buffer : " << sizeof(buffer) << " f :" << f; // ign
             show_debug = false;
         }
 

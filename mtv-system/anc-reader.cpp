@@ -31,22 +31,22 @@ void AncReader::run()
         while(thread_exit==0){
                 data = ts_reader->get_data();
                 if (show_debug) {
-                    qDebug() << "anc-reader.cpp 34\n\t\tdata.size : " << data.size << "\n\t\tthread_exit : " << thread_exit;
+                    qDebug(category) << "34 run()\t\tdata.size : " << data.size << "\n\t\tthread_exit : " << thread_exit;
                     show_debug = false;
                 }
 
                 if(data.size>0){
                         process(data);
-                        qDebug() << "anc-reader.cpp 40 \n\t\tdata.size" << data.size;
+                        qDebug(category) << "40 run()\t\tdata.size : " << data.size;
                         ts_reader->return_data(data);
                 }
         }
-        qDebug() << "anc-reader.cpp 40";
+        qDebug(category) << "44";
 }
 
 void AncReader::stop()
 {
-        qDebug() << "anc-reader.cpp 46";
+        qDebug(category) << "46 stop()";
         thread_exit = 1;
         ts_reader->stop();
         ts_reader->wait();
@@ -55,7 +55,7 @@ void AncReader::stop()
 
 void AncReader::process(data_t data)
 {
-        qDebug() << "anc-reader.cpp 55";
+        qDebug(category) << "55 process() start";
         if(readout_cnt){
                 readout_cnt = readout_cnt - 1;
                 return;
@@ -87,5 +87,5 @@ void AncReader::process(data_t data)
                 QByteArray ret = QByteArray(data.buf+1, data.size-1);
                 emit op42_data(0, ret);
         }
-        qDebug() << "anc-reader.cpp 86";
+        qDebug(category) << "86 process() exit";
 }
