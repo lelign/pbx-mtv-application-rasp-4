@@ -1,11 +1,11 @@
 #include <QLoggingCategory>
 #include "hardware_diagnostics.h"
 
-#define PATH_TO_FAN_STATE       ("/home/pi/gpio_from_508/gpio501/value")
-#define PATH_TO_FAN_STATE_RESET ("/home/pi/gpio_from_508/gpio502/value")
+#define PATH_TO_FAN_STATE       ("/gpio/gpio501/value") // ign
+#define PATH_TO_FAN_STATE_RESET ("/gpio/gpio502/value") // ign
 
-#define PATH_TO_FILE_POWER_CONSUMPTION ("/home/pi/hwmon/hwmon0/power1_input")
-#define PATH_TO_FILE_NAME_TEMP         ("/home/pi/hwmon/hwmon1/temp1_input")
+#define PATH_TO_FILE_POWER_CONSUMPTION ("/hwmon/hwmon0/power1_input") // ign
+#define PATH_TO_FILE_NAME_TEMP         ("/hwmon/hwmon1/temp1_input") // ign
 
 static QLoggingCategory category("Hardware_diagnostics Class");
 

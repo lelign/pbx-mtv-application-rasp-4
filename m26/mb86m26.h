@@ -35,7 +35,7 @@
 #define FIRMWARE_ENC_FILE "/var/mb86m21_assp_nsec_enc_h.bin"
 #define FIRMWARE_LDENC_FILE "/var/mb86m21_assp_nsec_ldenc_h.bin"
 //#define GPIO_VALUE "/sys/class/gpio/%s/value"
-#define GPIO_VALUE "/home/pi/gpio_from_508/%s/value"
+#define GPIO_VALUE "/gpio/%s/value" // ign
 
 // 458
 

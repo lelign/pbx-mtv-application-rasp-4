@@ -1,94 +1,98 @@
 factory_defaults/factory_defaults.cpp
-    #define PATH_TO_RESET_BUTTON_FILE "/sys/class/gpio/gpio444/value"
+    //#define PATH_TO_RESET_BUTTON_FILE "/sys/class/gpio/gpio444/value"
+    #define PATH_TO_RESET_BUTTON_FILE "/gpio/gpio444/value"
 
 gpio/gpio.cpp
     #if (BOARD_REV==0)
 
-        #define PATH_TO_GPIO_IN_0 "/home/pi/gpio_from_508/gpio480/value"
-        #define PATH_TO_GPIO_IN_1 "/home/pi/gpio_from_508/gpio481/value"
-        #define PATH_TO_GPIO_IN_2 "/home/pi/gpio_from_508/gpio482/value"
-        #define PATH_TO_GPIO_IN_3 "/home/pi/gpio_from_508/gpio483/value"
-        #define PATH_TO_GPIO_IN_4 "/home/pi/gpio_from_508/gpio484/value"
-        #define PATH_TO_GPIO_IN_5 "/home/pi/gpio_from_508/gpio485/value"
-        #define PATH_TO_GPIO_IN_6 "/home/pi/gpio_from_508/gpio486/value"
-        #define PATH_TO_GPIO_IN_7 "/home/pi/gpio_from_508/gpio487/value"
-        #define PATH_TO_GPIO_IN_8 "/home/pi/gpio_from_508/gpio489/value"
-        #define PATH_TO_GPIO_IN_9 "/home/pi/gpio_from_508/gpio488/value"
+        #define PATH_TO_GPIO_IN_0 "/gpio/gpio480/value"
+        #define PATH_TO_GPIO_IN_1 "/gpio/gpio481/value"
+        #define PATH_TO_GPIO_IN_2 "/gpio/gpio482/value"
+        #define PATH_TO_GPIO_IN_3 "/gpio/gpio483/value"
+        #define PATH_TO_GPIO_IN_4 "/gpio/gpio484/value"
+        #define PATH_TO_GPIO_IN_5 "/gpio/gpio485/value"
+        #define PATH_TO_GPIO_IN_6 "/gpio/gpio486/value"
+        #define PATH_TO_GPIO_IN_7 "/gpio/gpio487/value"
+        #define PATH_TO_GPIO_IN_8 "/gpio/gpio489/value"
+        #define PATH_TO_GPIO_IN_9 "/gpio/gpio488/value"
 
-        #define PATH_TO_GPIO_OUT  "/home/pi/gpio_from_508/gpio491/value"
+        #define PATH_TO_GPIO_OUT  "/gpio/gpio491/value"
 
     #else
 
-        #define PATH_TO_GPIO_IN_0 "/home/pi/gpio_from_508/gpio422/value"
-        #define PATH_TO_GPIO_IN_1 "/home/pi/gpio_from_508/gpio423/value"
-        #define PATH_TO_GPIO_IN_2 "/home/pi/gpio_from_508/gpio424/value"
-        #define PATH_TO_GPIO_IN_3 "/home/pi/gpio_from_508/gpio425/value"
-        #define PATH_TO_GPIO_IN_4 "/home/pi/gpio_from_508/gpio426/value"
-        #define PATH_TO_GPIO_IN_5 "/home/pi/gpio_from_508/gpio427/value"
-        #define PATH_TO_GPIO_IN_6 "/home/pi/gpio_from_508/gpio428/value"
-        #define PATH_TO_GPIO_IN_7 "/home/pi/gpio_from_508/gpio429/value"
-        #define PATH_TO_GPIO_IN_8 "/home/pi/gpio_from_508/gpio431/value"
-        #define PATH_TO_GPIO_IN_9 "/home/pi/gpio_from_508/gpio430/value"
+        #define PATH_TO_GPIO_IN_0 "/gpio/gpio422/value"
+        #define PATH_TO_GPIO_IN_1 "/gpio/gpio423/value"
+        #define PATH_TO_GPIO_IN_2 "/gpio/gpio424/value"
+        #define PATH_TO_GPIO_IN_3 "/gpio/gpio425/value"
+        #define PATH_TO_GPIO_IN_4 "/gpio/gpio426/value"
+        #define PATH_TO_GPIO_IN_5 "/gpio/gpio427/value"
+        #define PATH_TO_GPIO_IN_6 "/gpio/gpio428/value"
+        #define PATH_TO_GPIO_IN_7 "/gpio/gpio429/value"
+        #define PATH_TO_GPIO_IN_8 "/gpio/gpio431/value"
+        #define PATH_TO_GPIO_IN_9 "/gpio/gpio430/value"
 
-        #define PATH_TO_GPIO_OUT  "/home/pi/gpio_from_508/gpio433/value"
+        #define PATH_TO_GPIO_OUT  "/gpio/gpio433/value"
 
         #endif
 
 hardware_diagnostics/hardware_diagnostics.cpp
-    #define PATH_TO_FAN_STATE       ("/home/pi/gpio_from_508/gpio501/value")
-    #define PATH_TO_FAN_STATE_RESET ("/home/pi/gpio_from_508/gpio502/value")
+    #define PATH_TO_FAN_STATE       ("/gpio/gpio501/value")
+    #define PATH_TO_FAN_STATE_RESET ("/gpio/gpio502/value")
 
-    #define PATH_TO_FILE_POWER_CONSUMPTION ("/home/pi/hwmon/hwmon0/power1_input")
-    #define PATH_TO_FILE_NAME_TEMP         ("/home/pi/hwmon/hwmon1/temp1_input")
+    #define PATH_TO_FILE_POWER_CONSUMPTION ("/hwmon/hwmon0/power1_input")
+    #define PATH_TO_FILE_NAME_TEMP         ("/hwmon/hwmon1/temp1_input")
 
 led/led_class.cpp
     #if (BOARD_REV==0)
-        "/home/pi/gpio_from_508/gpio504/value", /* led 1 */
-        "/home/pi/gpio_from_508/gpio506/value", /* led 2 */
-        "/home/pi/gpio_from_508/gpio508/value", /* led 3 */
-        "/home/pi/gpio_from_508/gpio510/value", /* led 4 */
-        "/home/pi/gpio_from_508/gpio505/value", /* led 5 */
-        "/home/pi/gpio_from_508/gpio507/value", /* led 6 */
-        "/home/pi/gpio_from_508/gpio509/value", /* led 7 */
-        "/home/pi/gpio_from_508/gpio511/value"  /* led 8 */
+        "/gpio/gpio504/value", /* led 1 */
+        "/gpio/gpio506/value", /* led 2 */
+        "/gpio/gpio508/value", /* led 3 */
+        "/gpio/gpio510/value", /* led 4 */
+        "/gpio/gpio505/value", /* led 5 */
+        "/gpio/gpio507/value", /* led 6 */
+        "/gpio/gpio509/value", /* led 7 */
+        "/gpio/gpio511/value"  /* led 8 */
         #else
-        "/home/pi/gpio_from_508/gpio439/value", /* led 1 */
-        "/home/pi/gpio_from_508/gpio441/value", /* led 2 */
-        "/home/pi/gpio_from_508/gpio443/value", /* led 3 */
-        "/home/pi/gpio_from_508/gpio445/value", /* led 4 */
-        "/home/pi/gpio_from_508/gpio447/value", /* led 5 */
-        "/home/pi/gpio_from_508/gpio449/value", /* led 6 */
-        "/home/pi/gpio_from_508/gpio451/value", /* led 7 */
-        "/home/pi/gpio_from_508/gpio453/value"  /* led 8 */
+        "/gpio/gpio439/value", /* led 1 */
+        "/gpio/gpio441/value", /* led 2 */
+        "/gpio/gpio443/value", /* led 3 */
+        "/gpio/gpio445/value", /* led 4 */
+        "/gpio/gpio447/value", /* led 5 */
+        "/gpio/gpio449/value", /* led 6 */
+        "/gpio/gpio451/value", /* led 7 */
+        "/gpio/gpio453/value"  /* led 8 */
         #endif
 
 m26/m26-eeprom.cpp  <== !!! /var/spirom_writer_usb_c.bin NOT EXIST !!!
     #define FIRMWARE_FILE "/var/spirom_writer_usb_c.bin"
     //#define GPIO_VALUE "/sys/class/gpio/%s/value"
-    #define GPIO_VALUE "/home/pi/gpio_from_508/%s/value"
+    #define GPIO_VALUE "/gpio/%s/value"
 
 mtv-web/mtv_web.cpp
     #if (BOARD_REV==0)
-        #define PATH_TO_MODEL_DEVICE_FILE "/home/pi/gpio_from_508/gpio445/value"
+        #define PATH_TO_MODEL_DEVICE_FILE "/gpio/gpio445/value" (<value==1>)
     #else
-        #define PATH_TO_MODEL_DEVICE_FILE "/home/pi/gpio_from_508/gpio477/value"
+        #define PATH_TO_MODEL_DEVICE_FILE "/gpio/gpio477/value"
     #endif
 
-mtv-system/mtv-system.cpp <== /dev/mtv-overlay
+    cat /sys/class/gpio/gpio445/value   # 508
+        1
+
+mtv-system/mtv-system.cpp <== /dev/mtv-overlay # sudo mknod /dev/mtv-overlay c 249 0 # repeat after reboot
     //f = open("/dev/mtv-overlay", O_WRONLY);
     f = open("/dev/media3", O_WRONLY); // ign
 
-zvbi-test/anc-dump.c <== /dev/tsin1
+zvbi-test/anc-dump.c <== /dev/tsin1 <= sudo mknod /dev/tsin1 c 247 1 # repeat after reboot #work with ./zvbi-test: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, BuildID[sha1]=0df8686f58575f24d1575e7de1ef331942b26ea4, for GNU/Linux 3.2.0, not stripped
     #define ANCIN ("/dev/tsin1")
 
-pbx-mtv-508.cpp <== /dev/ttyS1
+pbx-mtv-508.cpp <== /dev/ttyS1  # sudo mknod /dev/ttyS1 c 4 65 && sudo chmod 660 /dev/ttyS1 # profnext-test
     #if (BOARD_REV==1)
         panel = new ProfnextFrontPanel("/dev/ttyS1");
 
 watchdog.cpp  <== /dev/watchdog  exist
     const char * WATCHDOG_FILE = "/dev/watchdog";
 
-hdmi_adv7513/hdmi_adv7513.cpp
+hdmi_adv7513/hdmi_adv7513.cpp  # /dev/i2c-0 /dev/i2c-1 <= task for dtsi ?
     #if (BOARD_REV==0)
         static const char * i2c_filename = "/dev/i2c-0";
     #else
@@ -96,7 +100,7 @@ hdmi_adv7513/hdmi_adv7513.cpp
     #endif
 
 m26/mpeg-dump.cpp
-    f = fopen("/dev/shm/dump.ts", "w+");
+    f = fopen("/dev/shm/dump.ts", "w+");  # not exist in 508
 
 mtv-system/mtv-system.cpp /dev/tty10 ??? /dev/str-mem  <== NOT EXIST in rasp ERR?
     const char * fname = "/dev/str-mem";  <== NOT EXIST in rasp ERR?
@@ -104,6 +108,75 @@ mtv-system/mtv-system.cpp /dev/tty10 ??? /dev/str-mem  <== NOT EXIST in rasp ERR
     #define MOTION_THR (100)
     #define ANCIN ("/dev/tty10")
 
-profnext/profnext-test.cpp
+profnext/profnext-test.cpp sudo mknod /dev/ttyS1 c 4 65 && sudo chmod 660 /dev/ttyS1 # profnext-test
     panel = new ProfnextFrontPanel("/dev/ttyS1");
+    ls -al /dev/ttyS1
+        crw-rw----    1 root     dialout     4,  65 Jan  1  1970 /dev/ttyS1
+    cat /etc/group | grep dialout
+        dialout:x:20:
+
+
+
+
+# after raspberry reboot
+sudo mknod /dev/mtv-overlay c 249 0 # mtv-system (pbx-mtv-508)
+sudo mknod /dev/tsin1 c 247 1 # zvbi
+sudo mknod /dev/str-mem c 248 0 # profnext
+sudo mknod /dev/ttyS1 c 4 65 && sudo chmod 660 /dev/ttyS1 # profnext-test
+
+
+
+
+
+
+
+
+
+# addr_link 508
+ls -al /sys/devices/platform/soc/
+drwxr-xr-x   40 root     root             0 Jan  1  1970 .
+drwxr-xr-x   10 root     root             0 Jan  1  1970 ..
+-rw-r--r--    1 root     root          4096 Mar 13 17:02 driver_override
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ff202780.strmem
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ff202880.overlay
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ff204880.tsin2
+drwxr-xr-x    6 root     root             0 Jan  1  1970 ff702000.ethernet
+drwxr-xr-x    4 root     root             0 Jan  1  1970 ff704000.dwmmc0
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ff706000.fpgamgr
+drwxr-xr-x    5 root     root             0 Jan  1  1970 ff708000.gpio
+drwxr-xr-x    5 root     root             0 Jan  1  1970 ff709000.gpio
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ff800000.l3regs
+drwxr-xr-x    4 root     root             0 Jan  1  1970 ffb40000.usb
+drwxr-xr-x    4 root     root             0 Jan  1  1970 ffc02000.serial0
+drwxr-xr-x    4 root     root             0 Jan  1  1970 ffc03000.serial1
+drwxr-xr-x    4 root     root             0 Jan  1  1970 ffc04000.i2c
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ffc08000.timer0
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ffc09000.timer1
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ffc25000.sdr
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ffc25000.sdrctl
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ffd00000.timer2
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ffd01000.timer3
+drwxr-xr-x    5 root     root             0 Jan  1  1970 ffd02000.watchdog
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ffd04000.clkmgr
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ffd05000.rstmgr
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ffd08000.sysmgr
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ffd08140.l2edac
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ffd08144.ocramedac
+drwxr-xr-x    4 root     root             0 Jan  1  1970 fff00000.spi
+drwxr-xr-x    3 root     root             0 Jan  1  1970 fffec000.snoop-control-unit
+drwxr-xr-x    3 root     root             0 Jan  1  1970 fffec600.timer
+drwxr-xr-x    3 root     root             0 Jan  1  1970 fffef000.l2-cache
+drwxr-xr-x    3 root     root             0 Jan  1  1970 ffff0000.sram
+-r--r--r--    1 root     root          4096 Mar 13 17:02 modalias
+lrwxrwxrwx    1 root     root             0 Mar 13 17:02 of_node -> ../../../firmware/devicetree/base/soc
+drwxr-xr-x    2 root     root             0 Mar 13 17:02 power
+drwxr-xr-x    4 root     root             0 Jan  1  1970 soc:amba
+drwxr-xr-x    3 root     root             0 Jan  1  1970 soc:fpgabridge@0
+drwxr-xr-x    3 root     root             0 Jan  1  1970 soc:fpgabridge@1
+drwxr-xr-x    3 root     root             0 Jan  1  1970 soc:fpgabridge@2
+drwxr-xr-x    3 root     root             0 Jan  1  1970 soc:pmu
+drwxr-xr-x    3 root     root             0 Jan  1  1970 soc:sdramedac
+drwxr-xr-x    3 root     root             0 Jan  1  1970 soc:usbphy@0
+lrwxrwxrwx    1 root     root             0 Jan  1  1970 subsystem -> ../../../bus/platform
+-rw-r--r--    1 root     root          4096 Jan  1  1970 uevent
 

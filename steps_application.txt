@@ -77,8 +77,22 @@
         свел все в файл gpio_assign.txt
 
         увеличил количество создаваемых Scte_104 до 16
+            pbx-mtv-508.h 60
+                Scte_104        *scte_104[16];
+            pbx-mtv-508.cpp 86
+                for(int i = 0; i < 16; ++i)
+            
 
-        in raspberry terminal create /dev/mtv-overlay
-        sudo mknod /dev/mtv-overlay c 249 0
-        mtv-system/mtv-system.cpp 727 added try/catch for /dev/mtv-overlay
-        # check => no catch ? it's work
+        in raspberry terminal create  # repeat after raspberry reboot
+        sudo mknod /dev/mtv-overlay c 249 0 # mtv-system (pbx-mtv-508) <-не делать, поломал raspberry
+        sudo mknod /dev/tsin1 c 247 1 # zvbi    <-не делать, поломал raspberry
+        sudo mknod /dev/str-mem c 248 0 # profnext  <-не делать, поломал raspberry
+        sudo mknod /dev/ttyS1 c 4 65 && sudo chmod 660 /dev/ttyS1 # profnext-test   <-не делать, поломал raspberry
+
+        в raspberry тоже есть /sys/class/gpio, но все очень по другому,
+        обойти не удасться, поэтому оставляю пока адресацию к gpio* в приложении
+        как /home/pi/gpio_from_508
+        нет, не так 
+        перенес все заглушки в корень /gpio и /hwmon0 /hwmon1
+        внес соотв изменения во все адресации в исходниках
+        проверил, собирается, запускается, работает
