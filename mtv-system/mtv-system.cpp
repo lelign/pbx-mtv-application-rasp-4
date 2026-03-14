@@ -864,7 +864,7 @@ QString PbxMtvSystem::get_sdi_format_str(int index)
                 return "LOSS";
         }
         
-        return "";
+        return "PASS";
 }
 
 int PbxMtvSystem::get_sdi_status(int index)
