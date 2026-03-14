@@ -3,23 +3,23 @@
 const QStringList  path_to_led_sdi_list =
 {
     #if (BOARD_REV==0)
-    "/home/pi/gpio_from_508/gpio504/value", /* led 1 */
-    "/home/pi/gpio_from_508/gpio506/value", /* led 2 */
-    "/home/pi/gpio_from_508/gpio508/value", /* led 3 */
-    "/home/pi/gpio_from_508/gpio510/value", /* led 4 */
-    "/home/pi/gpio_from_508/gpio505/value", /* led 5 */
-    "/home/pi/gpio_from_508/gpio507/value", /* led 6 */
-    "/home/pi/gpio_from_508/gpio509/value", /* led 7 */
-    "/home/pi/gpio_from_508/gpio511/value"  /* led 8 */
+    "/gpio/gpio504/value", /* led 1 */
+    "/gpio/gpio506/value", /* led 2 */
+    "/gpio/gpio508/value", /* led 3 */
+    "/gpio/gpio510/value", /* led 4 */
+    "/gpio/gpio505/value", /* led 5 */
+    "/gpio/gpio507/value", /* led 6 */
+    "/gpio/gpio509/value", /* led 7 */
+    "/gpio/gpio511/value"  /* led 8 */
     #else
-    "/home/pi/gpio_from_508/gpio439/value", /* led 1 */
-    "/home/pi/gpio_from_508/gpio441/value", /* led 2 */
-    "/home/pi/gpio_from_508/gpio443/value", /* led 3 */
-    "/home/pi/gpio_from_508/gpio445/value", /* led 4 */
-    "/home/pi/gpio_from_508/gpio447/value", /* led 5 */
-    "/home/pi/gpio_from_508/gpio449/value", /* led 6 */
-    "/home/pi/gpio_from_508/gpio451/value", /* led 7 */
-    "/home/pi/gpio_from_508/gpio453/value"  /* led 8 */
+    "/gpio/gpio439/value", /* led 1 */
+    "/gpio/gpio441/value", /* led 2 */
+    "/gpio/gpio443/value", /* led 3 */
+    "/gpio/gpio445/value", /* led 4 */
+    "/gpio/gpio447/value", /* led 5 */
+    "/gpio/gpio449/value", /* led 6 */
+    "/gpio/gpio451/value", /* led 7 */
+    "/gpio/gpio453/value"  /* led 8 */
     #endif
 };
 
