@@ -99,3 +99,7 @@
 
 #14_03  Поиск ошибки QIODevice::write (QFile, "/home/pi/gpio_from_508/gpio504/value"): device not open
         причина => забыл сохранить изменения в led_class.cpp после переноса заглушек в корень /
+
+#16_05  error Mtv_web: Could not open file "/home/pi/gpio_from_508/gpio445/value"
+        оказывается vscode не может найти запись 
+        #define PATH_TO_MODEL_DEVICE_FILE "/home/pi/gpio_from_508/gpio445/value"  
