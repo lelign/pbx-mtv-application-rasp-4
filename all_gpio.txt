@@ -1,0 +1,128 @@
+Результаты: 54 - Файлы 7
+
+factory_defaults/factory_defaults.cpp:
+  3  
+  4: /*#define PATH_TO_RESET_BUTTON_FILE "/sys/class/gpio/gpio444/value"*/
+  5: #define PATH_TO_RESET_BUTTON_FILE "/gpio/gpio444/value"
+  6  
+
+gpio/gpio.cpp:
+   4  
+   5: #define PATH_TO_GPIO_IN_0 "/gpio/gpio480/value"
+   6: #define PATH_TO_GPIO_IN_1 "/gpio/gpio481/value"
+   7: #define PATH_TO_GPIO_IN_2 "/gpio/gpio482/value"
+   8: #define PATH_TO_GPIO_IN_3 "/gpio/gpio483/value"
+   9: #define PATH_TO_GPIO_IN_4 "/gpio/gpio484/value"
+  10: #define PATH_TO_GPIO_IN_5 "/gpio/gpio485/value"
+  11: #define PATH_TO_GPIO_IN_6 "/gpio/gpio486/value"
+  12: #define PATH_TO_GPIO_IN_7 "/gpio/gpio487/value"
+  13: #define PATH_TO_GPIO_IN_8 "/gpio/gpio489/value"
+  14: #define PATH_TO_GPIO_IN_9 "/gpio/gpio488/value"
+  15: #define PATH_TO_GPIO_IN_10 "/gpio/gpio492/value"
+  16: #define PATH_TO_GPIO_IN_11 "/gpio/gpio493/value"
+  17: #define PATH_TO_GPIO_IN_12 "/gpio/gpio494/value"
+  18: #define PATH_TO_GPIO_IN_13 "/gpio/gpio495/value"
+  19: #define PATH_TO_GPIO_IN_14 "/gpio/gpio496/value"
+  20: #define PATH_TO_GPIO_IN_15 "/gpio/gpio497/value"
+  21  
+  22  
+  23: #define PATH_TO_GPIO_OUT  "/gpio/gpio491/value"
+  24  
+  25: #define LED_HPS_B  "/gpio/gpio517/value" // ign
+  26: //#define LED_HPS_A  "/gpio/gpio518/value" // ign
+  27  
+
+  29  
+  30: #define PATH_TO_GPIO_IN_0 "/gpio/gpio422/value"
+  31: #define PATH_TO_GPIO_IN_1 "/gpio/gpio423/value"
+  32: #define PATH_TO_GPIO_IN_2 "/gpio/gpio424/value"
+  33: #define PATH_TO_GPIO_IN_3 "/gpio/gpio425/value"
+  34: #define PATH_TO_GPIO_IN_4 "/gpio/gpio426/value"
+  35: #define PATH_TO_GPIO_IN_5 "/gpio/gpio427/value"
+  36: #define PATH_TO_GPIO_IN_6 "/gpio/gpio428/value"
+  37: #define PATH_TO_GPIO_IN_7 "/gpio/gpio429/value"
+  38: #define PATH_TO_GPIO_IN_8 "/gpio/gpio431/value"
+  39: #define PATH_TO_GPIO_IN_9 "/gpio/gpio430/value"
+  40  
+  41: #define PATH_TO_GPIO_OUT  "/gpio/gpio433/value"
+  42  
+
+hardware_diagnostics/hardware_diagnostics.cpp:
+  3  
+  4: #define PATH_TO_FAN_STATE       ("/gpio/gpio501/value") // ign
+  5: #define PATH_TO_FAN_STATE_RESET ("/gpio/gpio502/value") // ign
+  6  
+
+layout/layout.h:
+  20  #include "../qpps/qpps.h"
+  21: #include "../gpio/gpio.h"
+  22  #include "../eventlog-api/eventlog.h"
+
+led/led_class.cpp:
+    5      #if (BOARD_REV==0)
+    6:     "/gpio/gpio504/value", /* led 1 */
+    7:     "/gpio/gpio506/value", /* led 2 */
+    8:     "/gpio/gpio508/value", /* led 3 */
+    9:     "/gpio/gpio510/value", /* led 4 */
+    10:     "/gpio/gpio505/value", /* led 5 */
+    11:     "/gpio/gpio507/value", /* led 6 */
+    12:     "/gpio/gpio509/value", /* led 7 */
+    13:     "/gpio/gpio511/value"  /* led 8 */
+    14      #else
+    15:     "/gpio/gpio439/value", /* led 1 */
+    16:     "/gpio/gpio441/value", /* led 2 */
+    17:     "/gpio/gpio443/value", /* led 3 */
+    18:     "/gpio/gpio445/value", /* led 4 */
+    19:     "/gpio/gpio447/value", /* led 5 */
+    20:     "/gpio/gpio449/value", /* led 6 */
+    21:     "/gpio/gpio451/value", /* led 7 */
+    22:     "/gpio/gpio453/value"  /* led 8 */
+    23      #endif
+
+mtv-web/mtv_web.cpp:
+  13  #if (BOARD_REV==0)
+  14: #define PATH_TO_MODEL_DEVICE_FILE "/gpio/gpio445/value"
+  15  #else
+  16: #define PATH_TO_MODEL_DEVICE_FILE "/gpio/gpio445/value"
+  17  #endif
+
+web_socket_server/websocketserver.cpp:
+  10  
+  11: #define LED_HPS_A  "/gpio/gpio518/value" // ign
+  12  
+
+
+
+# ISSUES
+
+    led/led_class.cpp
+        /var/volatile/gpio/led_1
+
+    factory_defaults/factory_defaults.cpp
+        /var/volatile/gpio/reset_button
+
+    gpio/gpio.cpp
+        /var/volatile/gpio/SOLO_IN_1-16
+        /var/volatile/gpio/COMMON_ALARM
+        /sys/class/gpio/gpio517/value                           <= needs chang in 5161
+
+    mtv-web/mtv_web.cpp
+        /var/volatile/gpio/MODEL_DEVICE
+
+    hardware_diagnostics/hardware_diagnostics.cpp
+        /var/volatile/gpio/FAN_STATE 
+        /var/volatile/gpio/FAN_STATE_RESET
+        /* on rasp
+        cat /hwmon/hwmon0/power1_input                  <=check void in a10, must be:
+                                                                                    int Hardware_diagnostics::get_power_W()
+                                                                                    {
+                                                                                        return (get_value(PATH_TO_FILE_POWER_CONSUMPTION) + 50000) / 100000;
+                                                                                    }
+            7340000
+        */
+        /var/volatile/gpio/POWER1_INPUT
+        /* on a10 && rasp the same value
+        cat /sys/class/hwmon/hwmon0/temp1_input
+            23000
+        */
+

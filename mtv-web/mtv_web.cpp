@@ -11,9 +11,9 @@
 
 #define SETTINGS_SYS_CONFIG_FILE_NAME ("pbx-mtv-508_sys")
 #if (BOARD_REV==0)
-#define PATH_TO_MODEL_DEVICE_FILE "/gpio/gpio445/value"
+#define PATH_TO_MODEL_DEVICE_FILE "/var/volatile/gpio/MODEL_DEVICE"
 #else
-#define PATH_TO_MODEL_DEVICE_FILE "/gpio/gpio445/value"
+#define PATH_TO_MODEL_DEVICE_FILE "/var/volatile/gpio/MODEL_DEVICE"
 #endif
 
 

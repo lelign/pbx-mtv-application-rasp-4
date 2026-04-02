@@ -2,43 +2,57 @@
 
 #if (BOARD_REV==0)
 
-#define PATH_TO_GPIO_IN_0 "/gpio/gpio480/value"
-#define PATH_TO_GPIO_IN_1 "/gpio/gpio481/value"
-#define PATH_TO_GPIO_IN_2 "/gpio/gpio482/value"
-#define PATH_TO_GPIO_IN_3 "/gpio/gpio483/value"
-#define PATH_TO_GPIO_IN_4 "/gpio/gpio484/value"
-#define PATH_TO_GPIO_IN_5 "/gpio/gpio485/value"
-#define PATH_TO_GPIO_IN_6 "/gpio/gpio486/value"
-#define PATH_TO_GPIO_IN_7 "/gpio/gpio487/value"
-#define PATH_TO_GPIO_IN_8 "/gpio/gpio489/value"
-#define PATH_TO_GPIO_IN_9 "/gpio/gpio488/value"
-#define PATH_TO_GPIO_IN_10 "/gpio/gpio492/value"
-#define PATH_TO_GPIO_IN_11 "/gpio/gpio493/value"
-#define PATH_TO_GPIO_IN_12 "/gpio/gpio494/value"
-#define PATH_TO_GPIO_IN_13 "/gpio/gpio495/value"
-#define PATH_TO_GPIO_IN_14 "/gpio/gpio496/value"
-#define PATH_TO_GPIO_IN_15 "/gpio/gpio497/value"
+#define PATH_TO_GPIO_IN_0 "/var/volatile/gpio/SOLO_IN_1"
+#define PATH_TO_GPIO_IN_1 "/var/volatile/gpio/SOLO_IN_2"
+#define PATH_TO_GPIO_IN_2 "/var/volatile/gpio/SOLO_IN_3"
+#define PATH_TO_GPIO_IN_3 "/var/volatile/gpio/SOLO_IN_4"
+#define PATH_TO_GPIO_IN_4 "/var/volatile/gpio/SOLO_IN_5"
+#define PATH_TO_GPIO_IN_5 "/var/volatile/gpio/SOLO_IN_6"
+#define PATH_TO_GPIO_IN_6 "/var/volatile/gpio/SOLO_IN_7"
+#define PATH_TO_GPIO_IN_7 "/var/volatile/gpio/SOLO_IN_8"
+#define PATH_TO_GPIO_IN_8 "/var/volatile/gpio/SOLO_IN_9"
+#define PATH_TO_GPIO_IN_9 "/var/volatile/gpio/SOLO_IN_10"
+#define PATH_TO_GPIO_IN_10 "/var/volatile/gpio/SOLO_IN_11"
+#define PATH_TO_GPIO_IN_11 "/var/volatile/gpio/SOLO_IN_12"
+#define PATH_TO_GPIO_IN_12 "/var/volatile/gpio/SOLO_IN_13"
+#define PATH_TO_GPIO_IN_13 "/var/volatile/gpio/SOLO_IN_14"
+#define PATH_TO_GPIO_IN_14 "/var/volatile/gpio/SOLO_IN_15"
+#define PATH_TO_GPIO_IN_15 "/var/volatile/gpio/SOLO_IN_16"
 
 
-#define PATH_TO_GPIO_OUT  "/gpio/gpio491/value"
+#define PATH_TO_GPIO_OUT  "/var/volatile/gpio/COMMON_ALARM"
+#define SOLO_DISABLE  "/var/volatile/gpio/SOLO_DISABLE"
+#define TIME_COUNTER "/var/volatile/gpio/TIME_COUNTER"
 
 #define LED_HPS_B  "/gpio/gpio517/value" // ign
 //#define LED_HPS_A  "/gpio/gpio518/value" // ign
 
 #else
 
-#define PATH_TO_GPIO_IN_0 "/gpio/gpio422/value"
-#define PATH_TO_GPIO_IN_1 "/gpio/gpio423/value"
-#define PATH_TO_GPIO_IN_2 "/gpio/gpio424/value"
-#define PATH_TO_GPIO_IN_3 "/gpio/gpio425/value"
-#define PATH_TO_GPIO_IN_4 "/gpio/gpio426/value"
-#define PATH_TO_GPIO_IN_5 "/gpio/gpio427/value"
-#define PATH_TO_GPIO_IN_6 "/gpio/gpio428/value"
-#define PATH_TO_GPIO_IN_7 "/gpio/gpio429/value"
-#define PATH_TO_GPIO_IN_8 "/gpio/gpio431/value"
-#define PATH_TO_GPIO_IN_9 "/gpio/gpio430/value"
+#define PATH_TO_GPIO_IN_0 "/var/volatile/gpio/SOLO_IN_1"
+#define PATH_TO_GPIO_IN_1 "/var/volatile/gpio/SOLO_IN_2"
+#define PATH_TO_GPIO_IN_2 "/var/volatile/gpio/SOLO_IN_3"
+#define PATH_TO_GPIO_IN_3 "/var/volatile/gpio/SOLO_IN_4"
+#define PATH_TO_GPIO_IN_4 "/var/volatile/gpio/SOLO_IN_5"
+#define PATH_TO_GPIO_IN_5 "/var/volatile/gpio/SOLO_IN_6"
+#define PATH_TO_GPIO_IN_6 "/var/volatile/gpio/SOLO_IN_7"
+#define PATH_TO_GPIO_IN_7 "/var/volatile/gpio/SOLO_IN_8"
+#define PATH_TO_GPIO_IN_8 "/var/volatile/gpio/SOLO_IN_9"
+#define PATH_TO_GPIO_IN_9 "/var/volatile/gpio/SOLO_IN_10"
+#define PATH_TO_GPIO_IN_10 "/var/volatile/gpio/SOLO_IN_11"
+#define PATH_TO_GPIO_IN_11 "/var/volatile/gpio/SOLO_IN_12"
+#define PATH_TO_GPIO_IN_12 "/var/volatile/gpio/SOLO_IN_13"
+#define PATH_TO_GPIO_IN_13 "/var/volatile/gpio/SOLO_IN_14"
+#define PATH_TO_GPIO_IN_14 "/var/volatile/gpio/SOLO_IN_15"
+#define PATH_TO_GPIO_IN_15 "/var/volatile/gpio/SOLO_IN_16"
 
-#define PATH_TO_GPIO_OUT  "/gpio/gpio433/value"
+
+#define PATH_TO_GPIO_OUT  "/var/volatile/gpio/COMMON_ALARM"
+#define SOLO_DISABLE  "/var/volatile/gpio/SOLO_DISABLE"
+#define TIME_COUNTER "/var/volatile/gpio/TIME_COUNTER"
+
+#define LED_HPS_B  "/gpio/gpio517/value" // ign
+//#define LED_HPS_A  "/gpio/gpio518/value" // ign
 
 #endif
 
@@ -54,9 +68,17 @@ Gpio::Gpio()
     input.append({.old_state = 1, .path_to_gpio = PATH_TO_GPIO_IN_5});
     input.append({.old_state = 1, .path_to_gpio = PATH_TO_GPIO_IN_6});
     input.append({.old_state = 1, .path_to_gpio = PATH_TO_GPIO_IN_7});
+    input.append({.old_state = 1, .path_to_gpio = PATH_TO_GPIO_IN_8});
+    input.append({.old_state = 1, .path_to_gpio = PATH_TO_GPIO_IN_9});
+    input.append({.old_state = 1, .path_to_gpio = PATH_TO_GPIO_IN_10});
+    input.append({.old_state = 1, .path_to_gpio = PATH_TO_GPIO_IN_11});
+    input.append({.old_state = 1, .path_to_gpio = PATH_TO_GPIO_IN_12});
+    input.append({.old_state = 1, .path_to_gpio = PATH_TO_GPIO_IN_13});
+    input.append({.old_state = 1, .path_to_gpio = PATH_TO_GPIO_IN_14});
+    input.append({.old_state = 1, .path_to_gpio = PATH_TO_GPIO_IN_15});
 
-    input_SOLO_desable ={.old_state = 1, .path_to_gpio = PATH_TO_GPIO_IN_8};
-    input_time_counter ={.old_state = 1, .path_to_gpio = PATH_TO_GPIO_IN_9};
+    input_SOLO_desable ={.old_state = 1, .path_to_gpio = SOLO_DISABLE};
+    input_time_counter ={.old_state = 1, .path_to_gpio = TIME_COUNTER};
 
 
     old_common_alarm = -1;
@@ -202,10 +224,10 @@ void Gpio::slot_led_hps_b(){
     int state = get_value(LED_HPS_B);
     if(state == 0){
         set_state(LED_HPS_B, "1");
-        qDebug(category) << "LED_HPS_B OFF";
+        //qDebug(category) << "LED_HPS_B OFF";
     }else{
         set_state(LED_HPS_B, "0");
-        qDebug(category) << "LED_HPS_B ON";
+        //qDebug(category) << "LED_HPS_B ON";
     }
 
 }

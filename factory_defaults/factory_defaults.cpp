@@ -2,7 +2,7 @@
 #include "factory_defaults.h"
 
 /*#define PATH_TO_RESET_BUTTON_FILE "/sys/class/gpio/gpio444/value"*/
-#define PATH_TO_RESET_BUTTON_FILE "/gpio/gpio444/value"
+#define PATH_TO_RESET_BUTTON_FILE "/var/volatile/gpio/reset_button"
 
 static QLoggingCategory category("Factory Defaults Class");
 

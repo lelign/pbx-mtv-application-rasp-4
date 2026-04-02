@@ -3,23 +3,39 @@
 const QStringList  path_to_led_sdi_list =
 {
     #if (BOARD_REV==0)
-    "/gpio/gpio504/value", /* led 1 */
-    "/gpio/gpio506/value", /* led 2 */
-    "/gpio/gpio508/value", /* led 3 */
-    "/gpio/gpio510/value", /* led 4 */
-    "/gpio/gpio505/value", /* led 5 */
-    "/gpio/gpio507/value", /* led 6 */
-    "/gpio/gpio509/value", /* led 7 */
-    "/gpio/gpio511/value"  /* led 8 */
+    "/var/volatile/gpio/led_1", /* led 1 */
+    "/var/volatile/gpio/led_2", /* led 2 */
+    "/var/volatile/gpio/led_3", /* led 3 */
+    "/var/volatile/gpio/led_4", /* led 4 */
+    "/var/volatile/gpio/led_5", /* led 5 */
+    "/var/volatile/gpio/led_6", /* led 6 */
+    "/var/volatile/gpio/led_7", /* led 7 */
+    "/var/volatile/gpio/led_8"  /* led 8 */
+    "/var/volatile/gpio/led_9", /* led 9 */
+    "/var/volatile/gpio/led_10", /* led 10 */
+    "/var/volatile/gpio/led_11", /* led 11 */
+    "/var/volatile/gpio/led_12", /* led 12 */
+    "/var/volatile/gpio/led_13", /* led 13 */
+    "/var/volatile/gpio/led_14", /* led 14 */
+    "/var/volatile/gpio/led_15", /* led 15 */
+    "/var/volatile/gpio/led_16"  /* led 16 */
     #else
-    "/gpio/gpio439/value", /* led 1 */
-    "/gpio/gpio441/value", /* led 2 */
-    "/gpio/gpio443/value", /* led 3 */
-    "/gpio/gpio445/value", /* led 4 */
-    "/gpio/gpio447/value", /* led 5 */
-    "/gpio/gpio449/value", /* led 6 */
-    "/gpio/gpio451/value", /* led 7 */
-    "/gpio/gpio453/value"  /* led 8 */
+    "/var/volatile/gpio/led_1", /* led 1 */
+    "/var/volatile/gpio/led_2", /* led 2 */
+    "/var/volatile/gpio/led_3", /* led 3 */
+    "/var/volatile/gpio/led_4", /* led 4 */
+    "/var/volatile/gpio/led_5", /* led 5 */
+    "/var/volatile/gpio/led_6", /* led 6 */
+    "/var/volatile/gpio/led_7", /* led 7 */
+    "/var/volatile/gpio/led_8"  /* led 8 */
+    "/var/volatile/gpio/led_9", /* led 9 */
+    "/var/volatile/gpio/led_10", /* led 10 */
+    "/var/volatile/gpio/led_11", /* led 11 */
+    "/var/volatile/gpio/led_12", /* led 12 */
+    "/var/volatile/gpio/led_13", /* led 13 */
+    "/var/volatile/gpio/led_14", /* led 14 */
+    "/var/volatile/gpio/led_15", /* led 15 */
+    "/var/volatile/gpio/led_16"  /* led 16 */
     #endif
 };
 
