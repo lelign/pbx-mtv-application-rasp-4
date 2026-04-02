@@ -24,6 +24,8 @@ public slots:
     void slot_update_time_counter();
     void slot_update_solo_mode_desebled();
     void slot_update_state();
+    // void slot_led_hps_a(); // ign
+    void slot_led_hps_b(); // ign
 
 signals:
     void signal_solo(int input_number);
@@ -44,6 +46,8 @@ private:
     input_t input_time_counter;
 
     QTimer *timer_gpio_update;
+    // QTimer *timer_led_hps_a; // ign
+    QTimer *timer_led_hps_b; // ign
     int  old_common_alarm;
     int  gpio_mode;
     int  get_value(QString file_name);

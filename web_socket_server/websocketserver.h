@@ -6,6 +6,7 @@
 #include <QtCore/QByteArray>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QTimer> // ign
 
 QT_FORWARD_DECLARE_CLASS(QWebSocketServer)
 QT_FORWARD_DECLARE_CLASS(QWebSocket)
@@ -34,12 +35,17 @@ private Q_SLOTS:
     void processTextMessage(QString message);
     void socketDisconnected();
     QByteArray get_alive();
+    void slot_led_hps_a(); // ign
 
 private:
         QWebSocketServer *m_pWebSocketServer;
         QList<QWebSocket *> m_clients;
         bool m_debug;
-        void check_void();
+        QTimer *timer_led_hps_a; // ign
+        int  get_value(QString file_name); // ign
+        void set_state(QString file_name, const char *state); // ign
+        void check_void(); // ign
+        int timer_set = 500; // ign
         //void saveByteArraySecurely(); //ign
         QString fileName;
 };

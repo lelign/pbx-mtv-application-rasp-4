@@ -14,6 +14,7 @@ void ntpdate_server(const char * ntp_server)
         if(!f)
                 return;
         fprintf(f, ntp_server_format, ntp_server);
-        fprintf(f, update_hwclock);
+        // fprintf(f, update_hwclock);
+        fprintf(f, "%s", update_hwclock); // ign
         fclose(f);
 }

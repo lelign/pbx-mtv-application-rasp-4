@@ -16,10 +16,12 @@ int main()
         char buf[256];
         printf("ANC dump\n");
 
-        f_in = open(ANCIN, O_RDONLY);
+       // f_in = open(ANCIN, O_RDONLY);
+        f_in = open(ANCIN, O_RDONLY, 0644);
         assert(f_in>0);
         
-        f_out = open(ANCOUT, O_RDWR|O_CREAT);
+        //f_out = open(ANCOUT, O_RDWR|O_CREAT);
+        f_out = open(ANCOUT, O_RDWR|O_CREAT, 0644);
         assert(f_out>0);
 
         for(int i=0; i<256; i++){
@@ -37,3 +39,13 @@ int main()
         close(f_in);
         close(f_out);
 }
+
+
+/*
+        f_in = open(ANCIN, O_RDONLY, 0644);
+        assert(f_in>0);
+        
+        f_out = open(ANCOUT, O_RDWR|O_CREAT, 0644);
+
+
+*/

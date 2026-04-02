@@ -12,8 +12,18 @@
 #define PATH_TO_GPIO_IN_7 "/gpio/gpio487/value"
 #define PATH_TO_GPIO_IN_8 "/gpio/gpio489/value"
 #define PATH_TO_GPIO_IN_9 "/gpio/gpio488/value"
+#define PATH_TO_GPIO_IN_10 "/gpio/gpio492/value"
+#define PATH_TO_GPIO_IN_11 "/gpio/gpio493/value"
+#define PATH_TO_GPIO_IN_12 "/gpio/gpio494/value"
+#define PATH_TO_GPIO_IN_13 "/gpio/gpio495/value"
+#define PATH_TO_GPIO_IN_14 "/gpio/gpio496/value"
+#define PATH_TO_GPIO_IN_15 "/gpio/gpio497/value"
+
 
 #define PATH_TO_GPIO_OUT  "/gpio/gpio491/value"
+
+#define LED_HPS_B  "/gpio/gpio517/value" // ign
+//#define LED_HPS_A  "/gpio/gpio518/value" // ign
 
 #else
 
@@ -59,6 +69,18 @@ Gpio::Gpio()
     connect(timer_gpio_update, &QTimer::timeout, this, &Gpio::slot_update_time_counter);
     connect(timer_gpio_update, &QTimer::timeout, this, &Gpio::slot_update_solo_mode_desebled);
     connect(timer_gpio_update, &QTimer::timeout, this, &Gpio::slot_update_state);
+
+    /*
+    
+    
+    */
+
+
+    timer_led_hps_b = new QTimer; // ign
+    timer_led_hps_b->start(500); // ign
+    connect(timer_led_hps_b, &QTimer::timeout, this, &Gpio::slot_led_hps_b); // ign
+
+
 }
 
 void Gpio::set_mode(int mode)
@@ -161,6 +183,33 @@ void Gpio::set_common_alarm(int common_alarm)
     else
         set_state(PATH_TO_GPIO_OUT, "1");
 }
+
+/*
+void Gpio::slot_led_hps_a(){
+    int state = get_value(LED_HPS_A);
+    if(state == 0){
+        set_state(LED_HPS_A, "1");
+        qDebug(category) << "LED_HPS_A OFF";
+    }else{
+        set_state(LED_HPS_A, "0");
+    }
+
+}
+*/
+
+
+void Gpio::slot_led_hps_b(){
+    int state = get_value(LED_HPS_B);
+    if(state == 0){
+        set_state(LED_HPS_B, "1");
+        qDebug(category) << "LED_HPS_B OFF";
+    }else{
+        set_state(LED_HPS_B, "0");
+        qDebug(category) << "LED_HPS_B ON";
+    }
+
+}
+
 
 
 int Gpio::get_value(QString file_name)
